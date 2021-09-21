@@ -28,13 +28,22 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 	protected $type = [
 		'id' => 'megasena',
 		'name' => 'Mega-Sena',
+		'numbers' => 6,
 	];
 
 	public function tiposAposta() {
-		return [
+		return collect([
 			new \App\Models\LoteriaMegasena,
 			new \App\Models\LoteriaLotofacil,
-		];
+		]);
+	}
+
+	static function getInstance($type) {
+		foreach((new self)->tiposAposta() as $tipoAposta) {
+			if ($tipoAposta->type['id']==$type) {
+				return $tipoAposta;
+			}
+		}
 	}
 
 	public function import() {
@@ -71,6 +80,6 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 	public function importData($tr, $index) {}
 
 	public function getTypeAttribute() {
-		return (object) $this->type;
+		return $this->type;
 	}
 }

@@ -2148,6 +2148,64 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria-view.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria-view.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    type: Object,
+    items: Array
+  },
+  computed: {
+    computedType: function computedType() {
+      var type = this.type;
+      return type;
+    },
+    computedItems: function computedItems() {
+      return this.items.map(function (item) {
+        item.numbers = item.numbers.split(' ');
+        return item;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria.vue?vue&type=script&lang=js& ***!
@@ -11516,6 +11574,45 @@ component.options.__file = "resources/pages/index.vue"
 
 /***/ }),
 
+/***/ "./resources/pages/loteria-view.vue":
+/*!******************************************!*\
+  !*** ./resources/pages/loteria-view.vue ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _loteria_view_vue_vue_type_template_id_2378535f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loteria-view.vue?vue&type=template&id=2378535f& */ "./resources/pages/loteria-view.vue?vue&type=template&id=2378535f&");
+/* harmony import */ var _loteria_view_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loteria-view.vue?vue&type=script&lang=js& */ "./resources/pages/loteria-view.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _loteria_view_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _loteria_view_vue_vue_type_template_id_2378535f___WEBPACK_IMPORTED_MODULE_0__.render,
+  _loteria_view_vue_vue_type_template_id_2378535f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/pages/loteria-view.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/pages/loteria.vue":
 /*!*************************************!*\
   !*** ./resources/pages/loteria.vue ***!
@@ -11587,6 +11684,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/pages/loteria-view.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/pages/loteria-view.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_loteria_view_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./loteria-view.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria-view.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_loteria_view_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/pages/loteria.vue?vue&type=script&lang=js&":
 /*!**************************************************************!*\
   !*** ./resources/pages/loteria.vue?vue&type=script&lang=js& ***!
@@ -11633,6 +11746,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_59d236bf___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_59d236bf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./index.vue?vue&type=template&id=59d236bf& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/index.vue?vue&type=template&id=59d236bf&");
+
+
+/***/ }),
+
+/***/ "./resources/pages/loteria-view.vue?vue&type=template&id=2378535f&":
+/*!*************************************************************************!*\
+  !*** ./resources/pages/loteria-view.vue?vue&type=template&id=2378535f& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loteria_view_vue_vue_type_template_id_2378535f___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loteria_view_vue_vue_type_template_id_2378535f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loteria_view_vue_vue_type_template_id_2378535f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./loteria-view.vue?vue&type=template&id=2378535f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria-view.vue?vue&type=template&id=2378535f&");
 
 
 /***/ }),
@@ -11739,6 +11869,83 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria-view.vue?vue&type=template&id=2378535f&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria-view.vue?vue&type=template&id=2378535f& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("table", { staticClass: "table" }, [
+      _c(
+        "colgroup",
+        [
+          _c("col", { attrs: { width: "50px" } }),
+          _vm._v(" "),
+          _c("col", { attrs: { width: "*" } }),
+          _vm._v(" "),
+          _vm._l(_vm.type.numbers, function(n) {
+            return _c("col", { attrs: { width: "50px" } })
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("thead", [
+        _c(
+          "tr",
+          [
+            _c("th", [_vm._v("Nº")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Data")]),
+            _vm._v(" "),
+            _vm._l(_vm.type.numbers, function(n) {
+              return _c("th", [_vm._v(_vm._s(n))])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.computedItems, function(n) {
+          return _c(
+            "tr",
+            [
+              _c("td", [_vm._v(_vm._s(n.number))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(n.date))]),
+              _vm._v(" "),
+              _vm._l(n.numbers, function(nn) {
+                return _c("td", [_vm._v(_vm._s(nn))])
+              })
+            ],
+            2
+          )
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria.vue?vue&type=template&id=4b5ea003&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/pages/loteria.vue?vue&type=template&id=4b5ea003& ***!
@@ -11761,7 +11968,7 @@ var render = function() {
       { staticClass: "d-flex" },
       _vm._l(_vm.tiposAposta, function(ta) {
         return _c("div", { staticClass: "p-2" }, [
-          _c("a", { attrs: { href: "?" + ta.type.id + "=1" } }, [
+          _c("a", { attrs: { href: "/loteria/" + ta.type.id } }, [
             _vm._v(_vm._s(ta.type.name))
           ])
         ])
@@ -23945,6 +24152,8 @@ var map = {
 	"./index": "./resources/pages/index.vue",
 	"./index.vue": "./resources/pages/index.vue",
 	"./loteria": "./resources/pages/loteria.vue",
+	"./loteria-view": "./resources/pages/loteria-view.vue",
+	"./loteria-view.vue": "./resources/pages/loteria-view.vue",
 	"./loteria.vue": "./resources/pages/loteria.vue"
 };
 

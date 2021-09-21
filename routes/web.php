@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', '\App\Http\Controllers\AppController@index');
 
 Route::get('/loteria', '\App\Http\Controllers\LoteriaController@index');
+Route::get('/loteria/{type}', '\App\Http\Controllers\LoteriaController@loteriaView');

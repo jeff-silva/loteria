@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex">
             <div class="p-2" v-for="ta in tiposAposta">
-                <a :href="`?${ta.type.id}=1`">{{ ta.type.name }}</a>
+                <a :href="`/loteria/${ta.type.id}`">{{ ta.type.name }}</a>
             </div>
         </div>
     </div>
