@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+\Inertia\Inertia::share('tiposAposta', (new \App\Models\LoteriaSorteioBase)->tiposAposta());
+
 Route::get('/', '\App\Http\Controllers\AppController@index');
 
 Route::get('/loteria', '\App\Http\Controllers\LoteriaController@index');

@@ -27,6 +27,11 @@ class LoteriaController extends BaseController
         $data = [];
 
         if ($model = \App\Models\LoteriaSorteioBase::getInstance($type)) {
+            if (request('import')) {
+                $model->import();
+                return redirect()->back();
+            }
+
             $data['type'] = $model->type;
             $data['items'] = $model->orderBy('id', 'desc')->get();
         }

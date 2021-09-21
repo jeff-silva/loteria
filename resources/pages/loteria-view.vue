@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="d-flex justify-content-end mb-4">
+            <div><a href="?import=1" class="btn btn-primary rounded-0">Atualizar</a></div>
+        </div>
+
         <table class="table">
             <colgroup>
                 <col width="50px">
@@ -17,7 +21,14 @@
                 <tr v-for="n in computedItems">
                     <td>{{ n.number }}</td>
                     <td>{{ n.date }}</td>
-                    <td v-for="nn in n.numbers">{{ nn }}</td>
+                    <td v-for="nn in n.numbers" :class="{'bg-dark':nn==selectedNumber}">
+                        <a href="javascript:;"
+                            style="text-decoration:none;"
+                            :class="{'text-white':nn==selectedNumber}"
+                            class="d-block text-center"
+                            @click="selectNumber(nn)"
+                        >{{ nn }}</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -31,12 +42,19 @@ export default {
         items: Array,
     },
 
-    computed: {
-        computedType() {
-            let type = this.type;
-            return type;
-        },
+    data() {
+        return {
+            selectedNumber: false,
+        };
+    },
 
+    methods: {
+        selectNumber(number) {
+            this.selectedNumber = number;
+        },
+    },
+
+    computed: {
         computedItems() {
             return this.items.map(item => {
                 item.numbers = item.numbers.split(' ');

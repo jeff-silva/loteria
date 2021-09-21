@@ -3,7 +3,7 @@
         <div class="row no-gutters">
             <div class="col-2 p-0 bg-dark" style="height:100vh; position:sticky; top:0;">
                 <div class="list-group list-group-flush">
-                    <a :href="i.url" class="list-group-item bg-transparent text-white" v-for="i in menuItens">
+                    <a :href="i.url" class="list-group-item bg-transparent text-white" v-for="i in menuItems">
                         {{ i.label }}
                     </a>
                 </div>
@@ -19,17 +19,20 @@
 <script>
 export default {
     data() {
+        let menuItems = [{
+            label: "Home",
+            url: "/",
+        }];
+
+        this.$page.props.tiposAposta.forEach(tipoAposta => {
+            menuItems.push({
+                label: tipoAposta.type.name,
+                url: `/loteria/${tipoAposta.type.id}`,
+            });
+        });
+
         return {
-            menuItens: [
-                {
-                    label: "Home",
-                    url: "/",
-                },
-                {
-                    label: "Loteria",
-                    url: "/loteria",
-                },
-            ],
+            menuItems,
         };
     },
 }

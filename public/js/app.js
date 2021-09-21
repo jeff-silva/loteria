@@ -2109,14 +2109,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
+    var menuItems = [{
+      label: "Home",
+      url: "/"
+    }];
+    this.$page.props.tiposAposta.forEach(function (tipoAposta) {
+      menuItems.push({
+        label: tipoAposta.type.name,
+        url: "/loteria/".concat(tipoAposta.type.id)
+      });
+    });
     return {
-      menuItens: [{
-        label: "Home",
-        url: "/"
-      }, {
-        label: "Loteria",
-        url: "/loteria"
-      }]
+      menuItems: menuItems
     };
   }
 });
@@ -2185,16 +2189,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     type: Object,
     items: Array
   },
+  data: function data() {
+    return {
+      selectedNumber: false
+    };
+  },
+  methods: {
+    selectNumber: function selectNumber(number) {
+      this.selectedNumber = number;
+    }
+  },
   computed: {
-    computedType: function computedType() {
-      var type = this.type;
-      return type;
-    },
     computedItems: function computedItems() {
       return this.items.map(function (item) {
         item.numbers = item.numbers.split(' ');
@@ -11812,7 +11833,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "list-group list-group-flush" },
-            _vm._l(_vm.menuItens, function(i) {
+            _vm._l(_vm.menuItems, function(i) {
               return _c(
                 "a",
                 {
@@ -11886,6 +11907,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
     _c("table", { staticClass: "table" }, [
       _c(
         "colgroup",
@@ -11928,7 +11951,27 @@ var render = function() {
               _c("td", [_vm._v(_vm._s(n.date))]),
               _vm._v(" "),
               _vm._l(n.numbers, function(nn) {
-                return _c("td", [_vm._v(_vm._s(nn))])
+                return _c(
+                  "td",
+                  { class: { "bg-dark": nn == _vm.selectedNumber } },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "d-block text-center",
+                        class: { "text-white": nn == _vm.selectedNumber },
+                        staticStyle: { "text-decoration": "none" },
+                        attrs: { href: "javascript:;" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectNumber(nn)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(nn))]
+                    )
+                  ]
+                )
               })
             ],
             2
@@ -11939,7 +11982,25 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-end mb-4" }, [
+      _c("div", [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary rounded-0",
+            attrs: { href: "?import=1" }
+          },
+          [_vm._v("Atualizar")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
