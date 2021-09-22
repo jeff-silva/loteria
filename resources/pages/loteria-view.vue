@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="d-flex justify-content-end mb-4">
-            <div><a href="?import=1" class="btn btn-primary rounded-0">Atualizar</a></div>
+        <div class="bg-light mb-4 p-2 shadow-sm">
+            <div class="d-flex justify-content-end">
+                <div><a href="?import=1" class="btn btn-primary rounded-0">Atualizar</a></div>
+            </div>
         </div>
 
         <table class="table">
@@ -14,7 +16,7 @@
                 <tr>
                     <th>Nº</th>
                     <th>Data</th>
-                    <th v-for="n in type.numbers">{{ n }}</th>
+                    <th v-for="n in type.numbers" class="text-center">{{ n }}</th>
                 </tr>
             </thead>
             <tbody>

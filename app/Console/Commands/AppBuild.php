@@ -13,5 +13,6 @@ class AppBuild extends Command
         $this->call('migrate');
         $this->call('db:seed');
         $this->call('optimize');
+        $this->call('app:db-import');
     }
 }

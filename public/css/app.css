@@ -6,4 +6,5 @@
 @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/regular.min.css);
 @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css);
 @import url(https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap);
-body,html{font-family:Share Tech Mono,monospace}
+/* Font Awesome 5 */
+body, html {font-family: 'Share Tech Mono', monospace;}
