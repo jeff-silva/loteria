@@ -27,6 +27,17 @@ Vue.prototype.$swal = swal;
 //     });
 //   };
 
+import moment from 'moment';
+Vue.filter('dateFormat', (value, formatString='d/m/Y H:i:s') => {
+    formatString = formatString.replace(/d/, 'DD');
+    formatString = formatString.replace(/m/, 'MM');
+    formatString = formatString.replace(/y/, 'YYYY');
+    formatString = formatString.replace(/H/, 'hh');
+    formatString = formatString.replace(/i/, 'mm');
+    formatString = formatString.replace(/s/, 'ss');
+    return moment(value).format(formatString);
+});
+
 createInertiaApp({
     resolve: name => {
         const page = require(`../pages/${name}`).default;

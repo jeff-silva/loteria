@@ -22,7 +22,7 @@
             <tbody>
                 <tr v-for="n in computedItems">
                     <td>{{ n.number }}</td>
-                    <td>{{ n.date }}</td>
+                    <td>{{ n.date|dateFormat('d/m/Y') }}</td>
                     <td v-for="nn in n.numbers" :class="{'bg-dark':nn==selectedNumber}">
                         <a href="javascript:;"
                             style="text-decoration:none;"
