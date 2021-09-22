@@ -10,6 +10,8 @@ class AppBuild extends Command
     protected $description = 'Publica app';
 
     public function handle() {
-        $this->comment('⚙️  Em breve');
+        $this->call('migrate');
+        $this->call('db:seed');
+        $this->call('optimize');
     }
 }
