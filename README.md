@@ -24,3 +24,8 @@ php artisan serve
 ```bash
 npm watch
 ```
+
+# Publicação
+```bash
+npm run prod
+```
