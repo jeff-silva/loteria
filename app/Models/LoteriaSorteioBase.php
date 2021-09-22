@@ -69,8 +69,9 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 					@$dom->loadHTML($value);
 					$dom->preserveWhiteSpace = false;
 					if ($item = $self->importData($dom, $index)) {
-						$model = $self->firstOrNew(['number' => $item['number']], $item);
-						$model->save();
+						if (! $model->where('number', $item['number'])->first()) {
+							$model->create($item);
+						}
 					}
 				}
 			}
