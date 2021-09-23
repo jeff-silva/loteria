@@ -15,13 +15,13 @@
                             <div class="mb-3" v-if="a.goods.length">
                                 <div class="form-label">Bons:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div><loteria-select-clear v-model="a.goods"></loteria-select-clear></div>
+                                <div class="pt-2"><loteria-select-clear v-model="a.goods"></loteria-select-clear></div>
                             </div>
 
                             <div class="mb-3" v-if="a.bads.length">
                                 <div class="form-label">Ruins:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.bads" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div><loteria-select-clear v-model="a.bads"></loteria-select-clear></div>
+                                <div class="pt-2"><loteria-select-clear v-model="a.bads"></loteria-select-clear></div>
                             </div>
                         </div>
                     </div>
@@ -32,13 +32,13 @@
                             <div class="mb-3" v-if="analise.goods.length">
                                 <div class="form-label">Bons:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div><loteria-select-clear v-model="analise.goods"></loteria-select-clear></div>
+                                <div class="pt-2"><loteria-select-clear v-model="analise.goods"></loteria-select-clear></div>
                             </div>
 
                             <div class="mb-3" v-if="analise.bads.length">
                                 <div class="form-label">Ruins:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.bads" @click="selectNumbers([n])">{{ n }}</a></div>
-                                <div><loteria-select-clear v-model="analise.bads"></loteria-select-clear></div>
+                                <div class="pt-2"><loteria-select-clear v-model="analise.bads"></loteria-select-clear></div>
                             </div>
                         </div>
                     </div>
@@ -175,9 +175,9 @@ export default {
     components: {
         loteriaSelectClear: {
             props: {value: Array},
-            template: `<div class="d-flex">
-                <div class="p-1"><a href="javascript:;" @click="$parent.selectNumbers(value, true)">Selecionar todos</a></div>
-                <div class="p-1"><a href="javascript:;" @click="$parent.selectNumbers([], true)">Limpar</a></div>
+            template: `<div class="d-flex justify-content-end">
+                <div class="ps-2"><a href="javascript:;" class="btn btn-outline-primary btn-sm" style="text-decoration:none;" @click="$parent.selectNumbers(value, true)">Selecionar todos</a></div>
+                <div class="ps-2"><a href="javascript:;" class="btn btn-outline-primary btn-sm" style="text-decoration:none;" @click="$parent.selectNumbers([], true)">Limpar</a></div>
             </div>`,
         },
     },

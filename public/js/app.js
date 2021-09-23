@@ -2338,7 +2338,7 @@ __webpack_require__.r(__webpack_exports__);
       props: {
         value: Array
       },
-      template: "<div class=\"d-flex\">\n                <div class=\"p-1\"><a href=\"javascript:;\" @click=\"$parent.selectNumbers(value, true)\">Selecionar todos</a></div>\n                <div class=\"p-1\"><a href=\"javascript:;\" @click=\"$parent.selectNumbers([], true)\">Limpar</a></div>\n            </div>"
+      template: "<div class=\"d-flex justify-content-end\">\n                <div class=\"ps-2\"><a href=\"javascript:;\" class=\"btn btn-outline-primary btn-sm\" style=\"text-decoration:none;\" @click=\"$parent.selectNumbers(value, true)\">Selecionar todos</a></div>\n                <div class=\"ps-2\"><a href=\"javascript:;\" class=\"btn btn-outline-primary btn-sm\" style=\"text-decoration:none;\" @click=\"$parent.selectNumbers([], true)\">Limpar</a></div>\n            </div>"
     }
   }
 });
@@ -33939,6 +33939,7 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "div",
+                          { staticClass: "pt-2" },
                           [
                             _c("loteria-select-clear", {
                               model: {
@@ -33983,6 +33984,7 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "div",
+                          { staticClass: "pt-2" },
                           [
                             _c("loteria-select-clear", {
                               model: {
@@ -34036,6 +34038,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
+                        { staticClass: "pt-2" },
                         [
                           _c("loteria-select-clear", {
                             model: {
@@ -34080,6 +34083,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
+                        { staticClass: "pt-2" },
                         [
                           _c("loteria-select-clear", {
                             model: {
