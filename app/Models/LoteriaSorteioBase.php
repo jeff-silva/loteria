@@ -91,8 +91,10 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 	}
 
 	public function getAnalises($items=false) {
+
 		$analises = collect([
-			new \App\Models\LoteriaAnalise\LoteriaAnaliseProbabilidade($items),
+			new \App\Models\LoteriaAnalise\LoteriaAnaliseProbabilidade($items, $this->type),
+			new \App\Models\LoteriaAnalise\LoteriaAnaliseCentral($items, $this->type),
 		]);
 
 		$return['goods'] = call_user_func(function($analises) {

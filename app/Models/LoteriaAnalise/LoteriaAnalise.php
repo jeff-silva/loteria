@@ -8,17 +8,16 @@ class LoteriaAnalise {
     public $goods = [];
     public $bads = [];
 
-    public function __construct($items) {
-        $this->goods = $this->getGoods($items);
-        $this->bads = $this->getBads($items);
+    public function __construct($items, $type) {
+        $this->goods = $this->getGoods($items, $type);
+        $this->bads = $this->getBads($items, $type);
     }
 
-    public function getGoods($items) {
+    public function getGoods($items, $type) {
         return [];
     }
 
-    public function getBads($items) {
+    public function getBads($items, $type) {
         return [];
     }
-
 }

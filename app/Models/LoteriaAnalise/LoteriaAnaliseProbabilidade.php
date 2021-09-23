@@ -6,7 +6,7 @@ class LoteriaAnaliseProbabilidade extends LoteriaAnalise {
     public $id = 'probabilidade';
     public $title = 'Análise de probabilidade últimos 5 jogos';
 
-    public function getBads($items) {
+    public function getBads($items, $type) {
         $lasts = 5;
         $numbers = [];
 

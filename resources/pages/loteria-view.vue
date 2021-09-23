@@ -15,13 +15,13 @@
                             <div class="mb-3" v-if="a.goods.length">
                                 <div class="form-label">Bons:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div><a href="javascript:;" @click="selectNumbers(a.goods, true)">Selecionar todos</a></div>
+                                <div><loteria-select-clear v-model="a.goods"></loteria-select-clear></div>
                             </div>
 
                             <div class="mb-3" v-if="a.bads.length">
                                 <div class="form-label">Ruins:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.bads" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div><a href="javascript:;" @click="selectNumbers(a.bads, true)">Selecionar todos</a></div>
+                                <div><loteria-select-clear v-model="a.bads"></loteria-select-clear></div>
                             </div>
                         </div>
                     </div>
@@ -32,13 +32,13 @@
                             <div class="mb-3" v-if="analise.goods.length">
                                 <div class="form-label">Bons:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div><a href="javascript:;" @click="selectNumbers(analise.goods, true)">Selecionar todos</a></div>
+                                <div><loteria-select-clear v-model="analise.goods"></loteria-select-clear></div>
                             </div>
 
                             <div class="mb-3" v-if="analise.bads.length">
                                 <div class="form-label">Ruins:</div>
                                 <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.bads" @click="selectNumbers([n])">{{ n }}</a></div>
-                                <div><a href="javascript:;" @click="selectNumbers(analise.bads, true)">Selecionar todos</a></div>
+                                <div><loteria-select-clear v-model="analise.bads"></loteria-select-clear></div>
                             </div>
                         </div>
                     </div>
@@ -86,8 +86,8 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="n in computedItems">
-                                        <td>{{ n.number }}</td>
-                                        <td>{{ n.date|dateFormat('d/m/Y') }}</td>
+                                        <td><a href="javascript:;" @click="selectNumbers(n.numbers, true)">{{ n.number }}</a></td>
+                                        <td><a href="javascript:;" @click="selectNumbers(n.numbers, true)">{{ n.date|dateFormat('d/m/Y') }}</a></td>
                                         <td v-for="nn in n.numbers">
                                             <a href="javascript:;" :class="numberClasses(nn)" @click="selectNumbers([nn], true)">{{ nn }}</a>
                                         </td>
@@ -124,8 +124,9 @@ export default {
                 selectedNumbers = [];
             }
 
-            numbers.forEach((number, index) => {
-                if (selectedNumbers.indexOf(number) >=0) {
+            numbers.forEach(number => {
+                let index = selectedNumbers.indexOf(number);
+                if (index >=0) {
                     selectedNumbers.splice(index, 1);
                     return;
                 }
@@ -168,6 +169,16 @@ export default {
             })(r.numbers, this.type.numbersLine);
 
             return r;
+        },
+    },
+
+    components: {
+        loteriaSelectClear: {
+            props: {value: Array},
+            template: `<div class="d-flex">
+                <div class="p-1"><a href="javascript:;" @click="$parent.selectNumbers(value, true)">Selecionar todos</a></div>
+                <div class="p-1"><a href="javascript:;" @click="$parent.selectNumbers([], true)">Limpar</a></div>
+            </div>`,
         },
     },
 }

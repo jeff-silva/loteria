@@ -2287,8 +2287,10 @@ __webpack_require__.r(__webpack_exports__);
         selectedNumbers = [];
       }
 
-      numbers.forEach(function (number, index) {
-        if (selectedNumbers.indexOf(number) >= 0) {
+      numbers.forEach(function (number) {
+        var index = selectedNumbers.indexOf(number);
+
+        if (index >= 0) {
           selectedNumbers.splice(index, 1);
           return;
         }
@@ -2329,6 +2331,14 @@ __webpack_require__.r(__webpack_exports__);
       }(r.numbers, this.type.numbersLine);
 
       return r;
+    }
+  },
+  components: {
+    loteriaSelectClear: {
+      props: {
+        value: Array
+      },
+      template: "<div class=\"d-flex\">\n                <div class=\"p-1\"><a href=\"javascript:;\" @click=\"$parent.selectNumbers(value, true)\">Selecionar todos</a></div>\n                <div class=\"p-1\"><a href=\"javascript:;\" @click=\"$parent.selectNumbers([], true)\">Limpar</a></div>\n            </div>"
     }
   }
 });
@@ -33927,20 +33937,21 @@ var render = function() {
                           0
                         ),
                         _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "javascript:;" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.selectNumbers(a.goods, true)
-                                }
+                        _c(
+                          "div",
+                          [
+                            _c("loteria-select-clear", {
+                              model: {
+                                value: a.goods,
+                                callback: function($$v) {
+                                  _vm.$set(a, "goods", $$v)
+                                },
+                                expression: "a.goods"
                               }
-                            },
-                            [_vm._v("Selecionar todos")]
-                          )
-                        ])
+                            })
+                          ],
+                          1
+                        )
                       ])
                     : _vm._e(),
                   _vm._v(" "),
@@ -33970,20 +33981,21 @@ var render = function() {
                           0
                         ),
                         _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "javascript:;" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.selectNumbers(a.bads, true)
-                                }
+                        _c(
+                          "div",
+                          [
+                            _c("loteria-select-clear", {
+                              model: {
+                                value: a.bads,
+                                callback: function($$v) {
+                                  _vm.$set(a, "bads", $$v)
+                                },
+                                expression: "a.bads"
                               }
-                            },
-                            [_vm._v("Selecionar todos")]
-                          )
-                        ])
+                            })
+                          ],
+                          1
+                        )
                       ])
                     : _vm._e()
                 ])
@@ -34022,23 +34034,21 @@ var render = function() {
                         0
                       ),
                       _vm._v(" "),
-                      _c("div", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "javascript:;" },
-                            on: {
-                              click: function($event) {
-                                return _vm.selectNumbers(
-                                  _vm.analise.goods,
-                                  true
-                                )
-                              }
+                      _c(
+                        "div",
+                        [
+                          _c("loteria-select-clear", {
+                            model: {
+                              value: _vm.analise.goods,
+                              callback: function($$v) {
+                                _vm.$set(_vm.analise, "goods", $$v)
+                              },
+                              expression: "analise.goods"
                             }
-                          },
-                          [_vm._v("Selecionar todos")]
-                        )
-                      ])
+                          })
+                        ],
+                        1
+                      )
                     ])
                   : _vm._e(),
                 _vm._v(" "),
@@ -34068,20 +34078,21 @@ var render = function() {
                         0
                       ),
                       _vm._v(" "),
-                      _c("div", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "javascript:;" },
-                            on: {
-                              click: function($event) {
-                                return _vm.selectNumbers(_vm.analise.bads, true)
-                              }
+                      _c(
+                        "div",
+                        [
+                          _c("loteria-select-clear", {
+                            model: {
+                              value: _vm.analise.bads,
+                              callback: function($$v) {
+                                _vm.$set(_vm.analise, "bads", $$v)
+                              },
+                              expression: "analise.bads"
                             }
-                          },
-                          [_vm._v("Selecionar todos")]
-                        )
-                      ])
+                          })
+                        ],
+                        1
+                      )
                     ])
                   : _vm._e()
               ])
@@ -34211,11 +34222,37 @@ var render = function() {
                       return _c(
                         "tr",
                         [
-                          _c("td", [_vm._v(_vm._s(n.number))]),
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.selectNumbers(n.numbers, true)
+                                  }
+                                }
+                              },
+                              [_vm._v(_vm._s(n.number))]
+                            )
+                          ]),
                           _vm._v(" "),
                           _c("td", [
-                            _vm._v(
-                              _vm._s(_vm._f("dateFormat")(n.date, "d/m/Y"))
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.selectNumbers(n.numbers, true)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(_vm._f("dateFormat")(n.date, "d/m/Y"))
+                                )
+                              ]
                             )
                           ]),
                           _vm._v(" "),
