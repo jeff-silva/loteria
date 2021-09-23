@@ -20,7 +20,9 @@ class LoteriaMegasena extends LoteriaSorteioBase
 	protected $type = [
 		'id' => 'megasena',
 		'name' => 'Mega-Sena',
-		'numbers' => 6,
+		'numbersSelect' => 6,
+		'numbersTotal' => 60,
+		'numbersLine' => 10,
 	];
 
 	public function validate($data=[]) {

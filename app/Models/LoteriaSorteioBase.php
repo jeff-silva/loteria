@@ -28,7 +28,9 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 	protected $type = [
 		'id' => 'megasena',
 		'name' => 'Mega-Sena',
-		'numbers' => 6,
+		'numbersSelect' => 6,
+		'numbersTotal' => 60,
+		'numbersLine' => 10,
 	];
 
 	public function tiposAposta() {
@@ -82,5 +84,44 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 
 	public function getTypeAttribute() {
 		return $this->type;
+	}
+
+	public function getNumbers() {
+		return explode(' ', $this->numbers);
+	}
+
+	public function getAnalises($items=false) {
+		$analises = collect([
+			new \App\Models\LoteriaAnalise\LoteriaAnaliseProbabilidade($items),
+		]);
+
+		$return['goods'] = call_user_func(function($analises) {
+			$return = [];
+			
+			foreach($analises as $numbers) {
+				foreach($numbers as $number) {
+					$return[$number] = isset($return[$number])? $return[$number]: 0;
+					$return[$number]++;
+				}
+			}
+
+			return array_map('strval', array_keys($return));
+		}, $analises->pluck('goods')->toArray());
+
+		$return['bads'] = call_user_func(function($analises) {
+			$return = [];
+			
+			foreach($analises as $numbers) {
+				foreach($numbers as $number) {
+					$return[$number] = isset($return[$number])? $return[$number]: 0;
+					$return[$number]++;
+				}
+			}
+
+			return array_map('strval', array_keys($return));
+		}, $analises->pluck('bads')->toArray());
+
+		$return['analises'] = $analises;
+		return $return;
 	}
 }

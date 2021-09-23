@@ -6,34 +6,99 @@
             </div>
         </div>
 
-        <table class="table">
-            <colgroup>
-                <col width="50px">
-                <col width="*">
-                <col width="50px" v-for="n in type.numbers">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>Nº</th>
-                    <th>Data</th>
-                    <th v-for="n in type.numbers" class="text-center">{{ n }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="n in computedItems">
-                    <td>{{ n.number }}</td>
-                    <td>{{ n.date|dateFormat('d/m/Y') }}</td>
-                    <td v-for="nn in n.numbers" :class="{'bg-dark':nn==selectedNumber}">
-                        <a href="javascript:;"
-                            style="text-decoration:none;"
-                            :class="{'text-white':nn==selectedNumber}"
-                            class="d-block text-center"
-                            @click="selectNumber(nn)"
-                        >{{ nn }}</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="p-2">
+            <div class="row">
+                <div class="col-5">
+                    <div class="card mb-3" v-for="a in analise.analises">
+                        <div class="card-header">{{ a.title }}</div>
+                        <div class="card-body">
+                            <div class="mb-3" v-if="a.goods.length">
+                                <div class="form-label">Bons:</div>
+                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
+                                <div><a href="javascript:;" @click="selectNumbers(a.goods, true)">Selecionar todos</a></div>
+                            </div>
+
+                            <div class="mb-3" v-if="a.bads.length">
+                                <div class="form-label">Ruins:</div>
+                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.bads" @click="selectNumbers([n], true)">{{ n }}</a></div>
+                                <div><a href="javascript:;" @click="selectNumbers(a.bads, true)">Selecionar todos</a></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card mb-3">
+                        <div class="card-header">Média geral:</div>
+                        <div class="card-body">
+                            <div class="mb-3" v-if="analise.goods.length">
+                                <div class="form-label">Bons:</div>
+                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
+                                <div><a href="javascript:;" @click="selectNumbers(analise.goods, true)">Selecionar todos</a></div>
+                            </div>
+
+                            <div class="mb-3" v-if="analise.bads.length">
+                                <div class="form-label">Ruins:</div>
+                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.bads" @click="selectNumbers([n])">{{ n }}</a></div>
+                                <div><a href="javascript:;" @click="selectNumbers(analise.bads, true)">Selecionar todos</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="card">
+                        <div class="card-header">Selecionar ({{ type.numbersSelect }} números)</div>
+                        <div class="card-body p-0">
+                            <table class="table table-bordered m-0">
+                                <tbody>
+                                    <tr v-for="numbs in computedSelectNumbers.numbers">
+                                        <td v-for="n in numbs" class="text-center">
+                                            <a href="javascript:;" :class="numberClasses(n)" @click="selectNumbers([n], false)">{{ n }}</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="p-3 text-end">
+                                <a href="javascript:;" @click="selectNumbers([], true)">Limpar</a>
+                            </div>
+                            <div class="alert alert-warning rounded-0 m-0" v-if="selectedNumbers.length>type.numbersSelect">
+                                Para este tipo de jogo são necessários {{ type.numbersSelect }} números
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">Todos os sorteios</div>
+                        <div class="card-body p-0 overflow-scroll" style="max-height:600px;">
+                            <table class="table">
+                                <colgroup>
+                                    <col width="50px">
+                                    <col width="*">
+                                    <col width="*" v-for="n in type.numbers">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>Nº</th>
+                                        <th>Data</th>
+                                        <th v-for="n in type.numbers">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="n in computedItems">
+                                        <td>{{ n.number }}</td>
+                                        <td>{{ n.date|dateFormat('d/m/Y') }}</td>
+                                        <td v-for="nn in n.numbers">
+                                            <a href="javascript:;" :class="numberClasses(nn)" @click="selectNumbers([nn], true)">{{ nn }}</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -42,17 +107,40 @@ export default {
     props: {
         type: Object,
         items: Array,
+        analise: Object,
     },
 
     data() {
         return {
-            selectedNumber: false,
+            selectedNumbers: [],
         };
     },
 
     methods: {
-        selectNumber(number) {
-            this.selectedNumber = number;
+        selectNumbers(numbers, clear=false) {
+            let selectedNumbers = this.selectedNumbers;
+
+            if (clear) {
+                selectedNumbers = [];
+            }
+
+            numbers.forEach((number, index) => {
+                if (selectedNumbers.indexOf(number) >=0) {
+                    selectedNumbers.splice(index, 1);
+                    return;
+                }
+
+                selectedNumbers.push(number);
+            });
+
+            this.selectedNumbers = selectedNumbers;
+        },
+
+        numberClasses(number) {
+            return {
+                'loteria-link': true,
+                'active': (this.selectedNumbers.indexOf(number)>=0),
+            };
         },
     },
 
@@ -63,6 +151,43 @@ export default {
                 return item;
             });
         },
+
+        computedSelectNumbers() {
+            let r = {};
+            r.numbers = [];
+
+            for(let x=1; x<=this.type.numbersTotal; x++) {
+                x = x<10? ('0'+x): x.toString();
+                r.numbers.push(x);
+            }
+
+            r.numbers = ((arr, size) => {
+                return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => {
+                    return arr.slice(i * size, i * size + size);
+                });
+            })(r.numbers, this.type.numbersLine);
+
+            return r;
+        },
     },
 }
 </script>
+
+
+<style>
+.loteria-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--bs-dark);
+}
+
+.loteria-link.active {
+    background: var(--bs-dark);
+    color: #fff;
+}
+</style>

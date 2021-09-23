@@ -20,7 +20,9 @@ class LoteriaLotofacil extends LoteriaSorteioBase
 	protected $type = [
 		'id' => 'lotofacil',
 		'name' => 'Lotofácil',
-		'numbers' => 15,
+		'numbersSelect' => 15,
+		'numbersTotal' => 25,
+		'numbersLine' => 5,
 	];
 
 	public function validate($data=[]) {

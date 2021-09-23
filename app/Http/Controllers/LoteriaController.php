@@ -34,6 +34,7 @@ class LoteriaController extends BaseController
 
             $data['type'] = $model->type;
             $data['items'] = $model->orderBy('id', 'desc')->get();
+            $data['analise'] = $model->getAnalises($data['items']);
         }
 
         return \Inertia\Inertia::render('loteria-view', $data);
