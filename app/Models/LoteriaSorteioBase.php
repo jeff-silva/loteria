@@ -31,6 +31,7 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 		'numbersSelect' => 6,
 		'numbersTotal' => 60,
 		'numbersLine' => 10,
+		'numbersPremium' => 4,
 	];
 
 	public function tiposAposta() {

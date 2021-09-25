@@ -8,7 +8,7 @@
 
         <div class="p-2">
             <div class="row">
-                <div class="col-5">
+                <div class="col-3">
                     <div class="card mb-3" v-for="a in analise.analises">
                         <div class="card-header">{{ a.title }}</div>
                         <div class="card-body">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="col-7">
+                <div class="col-5">
                     <div class="card">
                         <div class="card-header">Selecionar ({{ type.numbersSelect }} números)</div>
                         <div class="card-body p-0">
@@ -60,14 +60,28 @@
                             <div class="p-3 text-end">
                                 <a href="javascript:;" @click="selectNumbers([], true)">Limpar</a>
                             </div>
-                            <div class="alert alert-warning rounded-0 m-0" v-if="selectedNumbers.length>type.numbersSelect">
+                            <!-- <div class="alert alert-warning rounded-0 m-0" v-if="selectedNumbers.length>type.numbersSelect">
                                 Para este tipo de jogo são necessários {{ type.numbersSelect }} números
+                            </div> -->
+
+                            <div class="border-top" style="max-height:400px; overflow:auto;" v-if="computedSelectedSorteios.length">
+                                <table class="table table-borderless m-0">
+                                    <tbody>
+                                        <tr v-for="s in computedSelectedSorteios">
+                                            <td>{{ s.number }}</td>
+                                            <td>{{ s.intersections.length }} acertos</td>
+                                            <td v-for="n in s.intersections">
+                                                <a href="javascript:;" :class="numberClasses(n)" @click="selectNumbers([n], false)">{{ n }}</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-4">
                     <div class="card">
                         <div class="card-header">Todos os sorteios</div>
                         <div class="card-body p-0 overflow-scroll" style="max-height:600px;">
@@ -169,6 +183,32 @@ export default {
             })(r.numbers, this.type.numbersLine);
 
             return r;
+        },
+
+        computedSelectedSorteios() {
+            let returns = [];
+            let _arrayIntersection = (a, b) => { const s = new Set(b); return [...new Set(a)].filter(x => s.has(x)); };
+
+            this.computedItems.forEach((item, itemIndex) => {
+                let intersections = _arrayIntersection(item.numbers, this.selectedNumbers);
+                if (intersections.length >= this.type.numbersPremium) {
+                    returns.push({
+                        id: item.id,
+                        number: item.number,
+                        numbers: item.numbers,
+                        date: item.date,
+                        intersections,
+                    });
+                }
+            });
+
+            returns.sort((a, b) => {
+                if (a.intersections.length < b.intersections.length) return 1;
+                if (a.intersections.length > b.intersections.length) return -1;
+                return 0;
+            });
+
+            return returns;
         },
     },
 

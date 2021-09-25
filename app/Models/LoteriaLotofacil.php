@@ -23,6 +23,7 @@ class LoteriaLotofacil extends LoteriaSorteioBase
 		'numbersSelect' => 15,
 		'numbersTotal' => 25,
 		'numbersLine' => 5,
+		'numbersPremium' => 11,
 	];
 
 	public function validate($data=[]) {

@@ -23,6 +23,7 @@ class LoteriaMegasena extends LoteriaSorteioBase
 		'numbersSelect' => 6,
 		'numbersTotal' => 60,
 		'numbersLine' => 10,
+		'numbersPremium' => 4,
 	];
 
 	public function validate($data=[]) {
