@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
+class Loteria extends \Illuminate\Database\Eloquent\Model
 {
 	use \App\Traits\Model;
 
@@ -18,6 +18,20 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 	public $appends = [
 		'type',
 	];
+
+	public function getNumbersAttribute($value) {
+		if (! is_array($value)) {
+			$value = explode(' ', $value);
+		}
+		return $value;
+	}
+
+	public function setNumbersAttribute($value) {
+		if (is_array($value)) {
+			$value = implode(' ', $value);
+		}
+		$this->attributes['numbers'] = $value;
+	}
 
 	public function validate($data=[]) {
 		return \Validator::make($data, [
@@ -53,7 +67,7 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 		$scraper_url = "http://loterias.caixa.gov.br/wps/portal/loterias/landing/{$this->type['id']}/";
 		$page1 = (new \Goutte\Client())->request('GET', $scraper_url);
 		$self = $this;
-
+		
 		$page1->filter('.title.zeta')->each(function($node) use($page1, $self) {
 			$result_page = implode('', [
 				$page1->getBaseHref(),
@@ -87,44 +101,42 @@ class LoteriaSorteioBase extends \Illuminate\Database\Eloquent\Model
 		return $this->type;
 	}
 
-	public function getNumbers() {
-		return explode(' ', $this->numbers);
-	}
-
 	public function getAnalises($items=false) {
 
-		$analises = collect([
-			new \App\Models\LoteriaAnalise\LoteriaAnaliseProbabilidade($items, $this->type),
-			new \App\Models\LoteriaAnalise\LoteriaAnaliseCentral($items, $this->type),
-		]);
+		// $analises = collect([
+		// 	new \App\Models\LoteriaAnalise\LoteriaAnaliseProbabilidade($items, $this->type),
+		// 	new \App\Models\LoteriaAnalise\LoteriaAnaliseCentral($items, $this->type),
+		// ]);
 
-		$return['goods'] = call_user_func(function($analises) {
-			$return = [];
+		// $return['goods'] = call_user_func(function($analises) {
+		// 	$return = [];
 			
-			foreach($analises as $numbers) {
-				foreach($numbers as $number) {
-					$return[$number] = isset($return[$number])? $return[$number]: 0;
-					$return[$number]++;
-				}
-			}
+		// 	foreach($analises as $numbers) {
+		// 		foreach($numbers as $number) {
+		// 			$return[$number] = isset($return[$number])? $return[$number]: 0;
+		// 			$return[$number]++;
+		// 		}
+		// 	}
 
-			return array_map('strval', array_keys($return));
-		}, $analises->pluck('goods')->toArray());
+		// 	return array_map('strval', array_keys($return));
+		// }, $analises->pluck('goods')->toArray());
 
-		$return['bads'] = call_user_func(function($analises) {
-			$return = [];
+		// $return['bads'] = call_user_func(function($analises) {
+		// 	$return = [];
 			
-			foreach($analises as $numbers) {
-				foreach($numbers as $number) {
-					$return[$number] = isset($return[$number])? $return[$number]: 0;
-					$return[$number]++;
-				}
-			}
+		// 	foreach($analises as $numbers) {
+		// 		foreach($numbers as $number) {
+		// 			$return[$number] = isset($return[$number])? $return[$number]: 0;
+		// 			$return[$number]++;
+		// 		}
+		// 	}
 
-			return array_map('strval', array_keys($return));
-		}, $analises->pluck('bads')->toArray());
+		// 	return array_map('strval', array_keys($return));
+		// }, $analises->pluck('bads')->toArray());
 
-		$return['analises'] = $analises;
-		return $return;
+		// $return['analises'] = $analises;
+		// return $return;
+
+		return [];
 	}
 }

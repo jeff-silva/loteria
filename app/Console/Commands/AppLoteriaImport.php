@@ -12,8 +12,8 @@ class AppLoteriaImport extends Command
     public function handle() {
         // $this->comment('test');
 
-        foreach((new \App\Models\LoteriaSorteioBase)->tiposAposta() as $tipo) {
-            if ($tipoAposta = \App\Models\LoteriaSorteioBase::getInstance($tipo->type['id'])) {
+        foreach((new \App\Models\Loteria)->tiposAposta() as $tipo) {
+            if ($tipoAposta = \App\Models\Loteria::getInstance($tipo->type['id'])) {
                 $tipoAposta->import();
             }
         }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class LoteriaMegasena extends LoteriaSorteioBase
+class LoteriaMegasena extends Loteria
 {
 	use \App\Traits\Model;
 

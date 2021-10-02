@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Models\LoteriaAnalise;
+namespace App\Models\LoteriaProbabilidade;
 
-class LoteriaAnaliseCentral extends LoteriaAnalise {
-    public $id = 'central';
-    public $title = 'Áreas mais/menos sorteadas por lógica central';
+class LoteriaProbabilidadeCentral extends LoteriaProbabilidade {
 
-    public function getGoods($items, $type) {
+    public $label = 'Probabilidade central';
+
+    public function getGoods($type, $sorteios=[]) {
+        $loteria = \App\Models\Loteria::getInstance($type);
+
         $numbers = array_map(function($number) {
             return str_pad($number, 2, '0', STR_PAD_LEFT);
-        }, range(1, $type['numbersTotal']));
+        }, range(1, $loteria->type['numbersTotal']));
 
-        $numbers = array_chunk($numbers, $type['numbersLine']);
+        $numbers = array_chunk($numbers, $loteria->type['numbersLine']);
 
         // remove first line
         unset($numbers[0]);
@@ -35,12 +37,15 @@ class LoteriaAnaliseCentral extends LoteriaAnalise {
         return $return;
     }
 
-    public function getBads($items, $type) {
+
+    public function getBads($type, $sorteios=[]) {
+        $loteria = \App\Models\Loteria::getInstance($type);
+        
         $numbers = array_map(function($number) {
             return str_pad($number, 2, '0', STR_PAD_LEFT);
-        }, range(1, $type['numbersTotal']));
+        }, range(1, $loteria->type['numbersTotal']));
 
-        $numbers = array_chunk($numbers, $type['numbersLine']);
+        $numbers = array_chunk($numbers, $loteria->type['numbersLine']);
         foreach($numbers as $i => $numbs) {
             if ($i==0 OR $i==sizeof($numbers)-1) { continue; }
             foreach($numbs as $ii=>$number) {
@@ -58,4 +63,5 @@ class LoteriaAnaliseCentral extends LoteriaAnalise {
 
         return $return;
     }
+
 }

@@ -1,23 +1,32 @@
 <?php
 
+// Analisa sequencia de números simulado para aposta
 namespace App\Models\LoteriaAnalise;
 
 class LoteriaAnalise {
-    public $id = false;
-    public $title = false;
-    public $goods = [];
-    public $bads = [];
+    
+    public $label = false;
 
-    public function __construct($items, $type) {
-        $this->goods = $this->getGoods($items, $type);
-        $this->bads = $this->getBads($items, $type);
+    public static function getTipos() {
+        return [
+            new LoteriaAnaliseTest,
+        ];
     }
 
-    public function getGoods($items, $type) {
-        return [];
+    public static function getAnalises($type, $sorteios=[]) {
+        $return = [
+            'items' => [],
+        ];
+
+        foreach(self::getTipos() as $tipoAnalise) {
+            $return['items'][] = $tipoAnalise;
+        }
+        
+        return $return;
     }
 
-    public function getBads($items, $type) {
+    public function getAnalise($type, $sorteios=[], $numbers=[]) {
+        $loteria = \App\Models\Loteria::getInstance($type);
         return [];
     }
 }

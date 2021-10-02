@@ -1,113 +1,118 @@
 <template>
     <div>
-        <div class="bg-light mb-4 p-2 shadow-sm">
-            <div class="d-flex justify-content-end">
-                <div><a href="?import=1" class="btn btn-primary rounded-0">Atualizar</a></div>
-            </div>
-        </div>
-
-        <div class="p-2">
-            <div class="row">
-                <div class="col-3">
-                    <div class="card mb-3" v-for="a in analise.analises">
-                        <div class="card-header">{{ a.title }}</div>
-                        <div class="card-body">
-                            <div class="mb-3" v-if="a.goods.length">
-                                <div class="form-label">Bons:</div>
-                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div class="pt-2"><loteria-select-clear v-model="a.goods"></loteria-select-clear></div>
-                            </div>
-
-                            <div class="mb-3" v-if="a.bads.length">
-                                <div class="form-label">Ruins:</div>
-                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in a.bads" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div class="pt-2"><loteria-select-clear v-model="a.bads"></loteria-select-clear></div>
-                            </div>
-                        </div>
+        <div v-if="sorteio">
+            <div class="bg-light mb-4 px-3 py-2 shadow-sm">
+                <div class="d-flex justify-content-end">
+                    <div class="flex-grow-1">
+                        <h2 class="m-0">{{ sorteio.tipoSorteio.name }}</h2>
                     </div>
-    
-                    <div class="card mb-3">
-                        <div class="card-header">Média geral:</div>
-                        <div class="card-body">
-                            <div class="mb-3" v-if="analise.goods.length">
-                                <div class="form-label">Bons:</div>
-                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.goods" @click="selectNumbers([n], true)">{{ n }}</a></div>
-                                <div class="pt-2"><loteria-select-clear v-model="analise.goods"></loteria-select-clear></div>
-                            </div>
-
-                            <div class="mb-3" v-if="analise.bads.length">
-                                <div class="form-label">Ruins:</div>
-                                <div><a href="javascript:;" :class="numberClasses(n)" v-for="n in analise.bads" @click="selectNumbers([n])">{{ n }}</a></div>
-                                <div class="pt-2"><loteria-select-clear v-model="analise.bads"></loteria-select-clear></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div><a href="?import=1" class="btn btn-primary btn-sm rounded-0">
+                        <i class="fas fa-fw fa-sync"></i>
+                    </a></div>
                 </div>
+            </div>
 
-                <div class="col-5">
-                    <div class="card">
-                        <div class="card-header">Selecionar ({{ type.numbersSelect }} números)</div>
-                        <div class="card-body p-0">
-                            <table class="table table-bordered m-0">
-                                <tbody>
-                                    <tr v-for="numbs in computedSelectNumbers.numbers">
-                                        <td v-for="n in numbs" class="text-center">
-                                            <a href="javascript:;" :class="numberClasses(n)" @click="selectNumbers([n], false)">{{ n }}</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="p-3 text-end">
-                                <a href="javascript:;" @click="selectNumbers([], true)">Limpar</a>
+            <div class="px-3">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">Sorteios de {{ props.params.min }} ~ {{ props.params.max }}</div>
+                            <div class="card-body p-0">
+
+                                <div class="px-3 pt-3">
+                                    <div class="input-group">
+                                        <div class="input-group-text">De</div>
+                                        <input type="number" class="form-control" v-model="props.params.min" @change="getAnalise()">
+                                        <div class="input-group-text">até</div>
+                                        <input type="number" class="form-control" v-model="props.params.max" @change="getAnalise()">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" @click="getAnalise()">Ir</button>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <hr>
+
+                                <div style="overflow:auto; max-height:calc(100vh - 220px);">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr v-for="s in sorteio.sorteios">
+                                                <td>
+                                                    <a href="javascript:;" @click="selectNumbers(s.numbers, true)">{{ s.number }}</a>
+                                                </td>
+                                                <!-- <td>{{ s.date|dateFormat }}</td> -->
+                                                <td v-for="n in s.numbers" class="p-0">
+                                                    <a href="javascript:;" :class="numberClasses(n)" @click="selectNumbers([n])">{{ n }}</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <!-- <div class="alert alert-warning rounded-0 m-0" v-if="selectedNumbers.length>type.numbersSelect">
-                                Para este tipo de jogo são necessários {{ type.numbersSelect }} números
-                            </div> -->
+                        </div>
+                    </div>
 
-                            <div class="border-top" style="max-height:400px; overflow:auto;" v-if="computedSelectedSorteios.length">
+
+                    <div class="col-5 px-3">
+                        <div class="card">
+                            <div class="card-header">Selecionar ({{ sorteio.tipoSorteio.numbersSelect }} números)</div>
+                            <div class="card-body p-0">
+                                <div class="m-0 p-3 pb-0">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"
+                                            v-model="selectedNumbersString"
+                                            placeholder="Informar números"
+                                            @keyup.enter="selectedNumbersStringConvert()"
+                                        >
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary rounded-0" @click="selectedNumbersStringConvert()">
+                                                Ir
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <hr>
+    
                                 <table class="table table-borderless m-0">
                                     <tbody>
-                                        <tr v-for="s in computedSelectedSorteios">
-                                            <td>{{ s.number }}</td>
-                                            <td>{{ s.intersections.length }} acertos</td>
-                                            <td v-for="n in s.intersections">
+                                        <tr v-for="numbs in sorteio.numbersTable">
+                                            <td v-for="n in numbs" class="text-center p-0">
                                                 <a href="javascript:;" :class="numberClasses(n)" @click="selectNumbers([n], false)">{{ n }}</a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                
+                                
+                                <div class="p-3 text-end">
+                                    <a href="javascript:;" @click="selectNumbers([], true)">Limpar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-header">Todos os sorteios</div>
-                        <div class="card-body p-0 overflow-scroll" style="max-height:600px;">
-                            <table class="table">
-                                <colgroup>
-                                    <col width="50px">
-                                    <col width="*">
-                                    <col width="*" v-for="n in type.numbers">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>Nº</th>
-                                        <th>Data</th>
-                                        <th v-for="n in type.numbers">&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="n in computedItems">
-                                        <td><a href="javascript:;" @click="selectNumbers(n.numbers, true)">{{ n.number }}</a></td>
-                                        <td><a href="javascript:;" @click="selectNumbers(n.numbers, true)">{{ n.date|dateFormat('d/m/Y') }}</a></td>
-                                        <td v-for="nn in n.numbers">
-                                            <a href="javascript:;" :class="numberClasses(nn)" @click="selectNumbers([nn], true)">{{ nn }}</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                    <div class="col-3">
+                        <div class="card mb-2" v-for="s in sorteio.probabilidades.items" v-if="s.goods.length && s.bads.length">
+                            <div class="card-header">{{ s.label }}</div>
+                            <div class="card-body">
+                                <div v-if="s.goods.length" class="mb-3">
+                                    <div class="px-2">Bons</div>
+                                    <div>
+                                        <a href="javascript:;" v-for="n in s.goods" :class="numberClasses(n)" @click="selectNumbers([n], false)">{{ n }}</a>
+                                    </div>
+                                    <a href="javascript:;" class="btn btn-outline-primary btn-sm d-block mt-2" @click="selectNumbers(s.goods, true)">Selecionar todos</a>
+                                </div>
+
+                                <div v-if="s.bads.length">
+                                    <div class="px-2">Ruins</div>
+                                    <div>
+                                        <a href="javascript:;" v-for="n in s.bads" :class="numberClasses(n)" @click="selectNumbers([n], false)">{{ n }}</a>
+                                    </div>
+                                    <a href="javascript:;" class="btn btn-outline-primary btn-sm d-block mt-2" @click="selectNumbers(s.bads, true)">Selecionar todos</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,50 +124,84 @@
 <script>
 export default {
     props: {
-        type: Object,
-        items: Array,
-        analise: Object,
+        type: String,
+        params: Object,
     },
 
     data() {
         return {
-            selectedNumbers: [],
+            props: JSON.parse(JSON.stringify(this.$props)),
+            selectedNumbersString: "",
+            sorteio: false,
         };
     },
 
     methods: {
         selectNumbers(numbers, clear=false) {
-            let selectedNumbers = this.selectedNumbers;
-
-            if (clear) {
-                selectedNumbers = [];
-            }
+            let selectedNumbers = clear? []: this.props.params.numbers;
 
             numbers.forEach(number => {
-                let index = selectedNumbers.indexOf(number);
-                if (index >=0) {
-                    selectedNumbers.splice(index, 1);
-                    return;
+                if (! clear) {
+                    let index = selectedNumbers.indexOf(number);
+                    if (index >=0) {
+                        selectedNumbers.splice(index, 1);
+                        return;
+                    }
                 }
 
                 selectedNumbers.push(number);
             });
 
-            this.selectedNumbers = selectedNumbers;
+            this.props.params.numbers = selectedNumbers;
+
+            this.refreshUrl();
+            this.getAnalise();
+        },
+
+        refreshUrl() {
+            const url = new URL(window.location);
+            url.searchParams.set('max', this.props.params.max);
+            url.searchParams.set('min', this.props.params.min);
+            url.searchParams.set('numbers', this.props.params.numbers.join("-"));
+            // url.searchParams.set('type', this.props.params.type);
+            window.history.pushState({}, '', url);
         },
 
         numberClasses(number) {
             return {
                 'loteria-link': true,
-                'active': (this.selectedNumbers.indexOf(number)>=0),
+                'active': (this.props.params.numbers.indexOf(number)>=0),
             };
+        },
+
+        getAnalise() {
+            if (this.getAnaliseTimeout) {
+                clearTimeout(this.getAnaliseTimeout);
+            }
+
+            this.getAnaliseTimeout = setTimeout(() => {
+                let params = this.props.params;
+                this.$axios.get('/api/loteria/analise', {params}).then(resp => {
+                    this.sorteio = resp.data;
+                });
+            }, 500);
+        },
+
+        selectedNumbersStringConvert() {
+            let selectedNumbers = this.selectedNumbersString.split(/[^0-9]/).filter(n => n).map(n => {
+                n = parseInt(n);
+                if (n<10) n = '0'+n;
+                return ''+n;
+            });
+
+            // this.selectedNumbersString = '';
+            this.selectNumbers(selectedNumbers, true);
         },
     },
 
     computed: {
         computedItems() {
             return this.items.map(item => {
-                item.numbers = item.numbers.split(' ');
                 return item;
             });
         },
@@ -171,16 +210,19 @@ export default {
             let r = {};
             r.numbers = [];
 
-            for(let x=1; x<=this.type.numbersTotal; x++) {
-                x = x<10? ('0'+x): x.toString();
-                r.numbers.push(x);
+            if (this.sorteio) {
+                console.log(this.sorteio.tipoSorteio, r.numbers);
+                for(let x=1; x<=this.sorteio.tipoSorteio.numbersTotal; x++) {
+                    x = x<10? ('0'+x): x.toString();
+                    r.numbers.push(x);
+                }
+    
+                r.numbers = ((arr, size) => {
+                    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => {
+                        return arr.slice(i * size, i * size + size);
+                    });
+                })(r.numbers, this.sorteio.tipoSorteio);
             }
-
-            r.numbers = ((arr, size) => {
-                return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => {
-                    return arr.slice(i * size, i * size + size);
-                });
-            })(r.numbers, this.type.numbersLine);
 
             return r;
         },
@@ -190,7 +232,7 @@ export default {
             let _arrayIntersection = (a, b) => { const s = new Set(b); return [...new Set(a)].filter(x => s.has(x)); };
 
             this.computedItems.forEach((item, itemIndex) => {
-                let intersections = _arrayIntersection(item.numbers, this.selectedNumbers);
+                let intersections = _arrayIntersection(item.numbers, this.props.selectedNumbers);
                 if (intersections.length >= this.type.numbersPremium) {
                     returns.push({
                         id: item.id,
@@ -220,6 +262,10 @@ export default {
                 <div class="ps-2"><a href="javascript:;" class="btn btn-outline-primary btn-sm" style="text-decoration:none;" @click="$parent.selectNumbers([], true)">Limpar</a></div>
             </div>`,
         },
+    },
+
+    mounted() {
+        this.getAnalise();
     },
 }
 </script>

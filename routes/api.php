@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/todo/project/save', '\App\Http\Controllers\TodoController@todoProjectSave');
+Route::get('/loteria/analise', '\App\Http\Controllers\LoteriaController@analise');
