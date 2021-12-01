@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+$routes = include __DIR__ . '/api_generated.php';
 
-Route::get('/loteria/analise', '\App\Http\Controllers\LoteriaController@analise');
+foreach($routes as $name => $route) {
+    call_user_func_array($route['call'], $route['params']);
+}

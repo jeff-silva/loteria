@@ -4,10 +4,10 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class AppDbExport extends Command
+class AppDbExport extends AppBase
 {
     protected $signature = 'app:db-export';
-    protected $description = 'Exporta banco de dados para schema.sql';
+    protected $description = 'Exporta estrutura do banco de dados para o arquivo config/database-schema.php';
 
     public function handle()
     {   
@@ -20,19 +20,7 @@ class AppDbExport extends Command
             ('return '. $this->varExport($database_schema) .';'),
         ]));
     }
-
-    public function varExport($data) {
-        $dump = var_export($data, true);
-        $dump = preg_replace('#(?:\A|\n)([ ]*)array \(#i', '[', $dump); // Starts
-        $dump = preg_replace('#\n([ ]*)\),#', "\n$1],", $dump); // Ends
-        $dump = preg_replace('#=> \[\n\s+\],\n#', "=> [],\n", $dump); // Empties
-        if (gettype($data) == 'object') { // Deal with object states
-            $dump = str_replace('__set_state(array(', '__set_state([', $dump);
-            $dump = preg_replace('#\)\)$#', "])", $dump);
-        }
-        else {  $dump = preg_replace('#\)$#', "]", $dump); }
-        return $dump;
-    }
+    
 
     public function getSchema() {
         $database_schema = [
@@ -41,16 +29,38 @@ class AppDbExport extends Command
         ];
 
         foreach(\DB::select('SHOW TABLE STATUS') as $table) {
+            $deletes = [
+                'Version', 'Row_format', 'Rows', 'Avg_row_length', 'Data_length', 'Max_data_length', 'Index_length',
+                'Data_free', 'Create_time', 'Update_time', 'Check_time', 'Checksum', 'Create_options',
+            ];
+            foreach($deletes as $delete) {
+                unset($table->$delete);
+            }
+
+            $table->Model = ((string) \Str::of($table->Name)->slug()->studly());
+            $table->ModelNamespace = '\App\Models';
+            $table->ModelFile = '\app\Models\\'. ((string) \Str::of($table->Name)->slug()->studly()) .'.php';
             
+            if ($table->Name=='users') {
+                $table->Model = ((string) \Str::of($table->Name)->slug()->singular()->studly());
+                $table->ModelNamespace = '\App\Models';
+                $table->ModelFile = '\app\Models\\'. ((string) \Str::of($table->Name)->slug()->singular()->studly()) .'.php';
+            }
+
+            $table->Controller = ((string) \Str::of($table->Name)->slug()->studly()) .'Controller';
+            $table->ControllerNamespace = '\App\Http\Controllers';
+            $table->ControllerFile = '\app\Http\Controllers\\'. ((string) \Str::of($table->Name)->slug()->studly()) .'Controller.php';
+
             $statement = collect(\DB::select("SHOW CREATE TABLE `{$table->Name}`;"))->pluck('Create Table')->first();
             $statement = str_replace('CREATE TABLE', 'CREATE TABLE IF NOT EXISTS', $statement);
-            $table->Create = str_replace("\n", '', $statement);
+            $table->Sql = str_replace(["\n", "\t"], '', $statement);
             
             $table->Fields = [];
             foreach(\DB::select("SHOW COLUMNS FROM {$table->Name}") as $col) {
-                $col->Query = $this->getFieldSchema($col);
+                $col->Sql = $this->getFieldSchema($col);
                 $table->Fields[ $col->Field ] = $col;
             }
+
             $database_schema['tables'][ $table->Name ] = $table;
         }
 
@@ -60,16 +70,5 @@ class AppDbExport extends Command
         }
 
         return json_decode(json_encode($database_schema), true);
-    }
-
-    public function getFieldSchema($field) {
-        $field = (array) $field;
-        $schema = [ $field['Type'] ];
-        $schema[] = (($field['Null']=='NO' || $field['Key']=='PRI')? 'NOT NULL': 'NULL');
-        if ($field['Extra']=='auto_increment') $schema[] = 'AUTO_INCREMENT';
-        if ($field['Key'] != 'PRI' AND !str_contains($field['Type'], 'varchar') AND !str_contains($field['Type'], 'int') AND $field['Type']!='longtext' AND $field['Type']!='timestamp') {
-            $schema[] = ($field['Default']===NULL? 'DEFAULT NULL': "DEFAULT '{$field['Default']}'");
-        }
-        return implode(' ', $schema);
     }
 }

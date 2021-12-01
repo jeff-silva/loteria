@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-\Inertia\Inertia::share('tiposAposta', (new \App\Models\Loteria)->tiposAposta());
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/', '\App\Http\Controllers\AppController@index');
+Route::get('{path}', function() {
+    if ($content = realpath(public_path('app.html'))) {
+        return file_get_contents($content);
+    }
 
-Route::get('/loteria', '\App\Http\Controllers\LoteriaController@index');
-Route::get('/loteria/{type}', '\App\Http\Controllers\LoteriaController@loteriaView');
+    return 'execute o comando "npm run generate" para que a view seja renderizada corretamente';
+})->where('path', '(.*)');
