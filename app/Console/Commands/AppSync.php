@@ -36,22 +36,7 @@ class AppSync extends AppBase
             (object) ['command' => 'commandReplace', 'file' => 'client/pages/admin/settings/email.vue'],
             (object) ['command' => 'commandReplace', 'file' => 'client/pages/admin/settings/files.vue'],
             (object) ['command' => 'commandReplace', 'file' => 'client/pages/admin/settings/index.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-content.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-editor.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-address.vue.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-auth-login.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-auth-password.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-auth-register.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-dropdown.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-field.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-form.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-modal.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-nav.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-password.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-playground.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-search.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-sidebar.vue'],
-            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui-upload.vue'],
+            (object) ['command' => 'commandReplace', 'file' => 'client/components/ui'],
         ];
 
         $commands2 = [];

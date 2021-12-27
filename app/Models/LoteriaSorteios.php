@@ -32,12 +32,32 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 	}
 
 	static function sorteioTypes() {
-		$types[] = [
+		/*
+		id: 
+		name: 
+		numbersSelect: 
+		numbersTotal: 
+		tableNumberStart: 
+		tableNumberFinal: 
+		tableNumberLine: 
+		*/
+
+		$default = [
+			'id' => 'id',
+			'name' => 'name',
+			'numbersSelectMin' => 10,
+			'numbersSelectMax' => 20,
+			'tableNumberStart' => 1,
+			'tableNumberFinal' => 100,
+			'tableNumberLine' => 10,
+		];
+		
+		$types[] = array_merge($default, [
 			'id' => 'lotofacil',
 			'name' => 'Lotofácil',
-			'numbersSelect' => 15,
-			'numbersTotal' => 25,
-			'numbersLine' => 5,
+			'tableNumberStart' => 1,
+			'tableNumberFinal' => 25,
+			'tableNumberLine' => 5,
 			'importer' => function($tr, $index) {
 				$tds = $tr->getElementsByTagName('td');
 				$item = [];
@@ -62,14 +82,14 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 				if (!$item['numbers']) return;
 				return $item;
 			},
-		];
+		]);
 		
-		$types[] = [
+		$types[] = array_merge($default, [
 			'id' => 'megasena',
 			'name' => 'Megasena',
-			'numbersSelect' => 15,
-			'numbersTotal' => 25,
-			'numbersLine' => 5,
+			'tableNumberStart' => 1,
+			'tableNumberFinal' => 60,
+			'tableNumberLine' => 10,
 			'importer' => function($tr, $index) {
 				$tds = $tr->getElementsByTagName('td');
 				$item = [];
@@ -94,7 +114,7 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 				if (!$item['numbers']) return;
 				return $item;
 			},
-		];
+		]);
 
 		return $types;
 	}

@@ -1,83 +1,86 @@
 {
+  "LoteriaNumbers": {
+    "description": "Auto imported from components/loteria/numbers.vue"
+  },
   "UiAddress": {
-    "description": "Auto imported from components/ui-address.vue"
+    "description": "Auto imported from components/ui/address.vue"
   },
-  "UiAuthLogin": {
-    "description": "Auto imported from components/ui-auth-login.vue"
+  "UiApp": {
+    "description": "Auto imported from components/ui/app.vue"
   },
-  "UiAuthPassword": {
-    "description": "Auto imported from components/ui-auth-password.vue"
-  },
-  "UiAuthRegister": {
-    "description": "Auto imported from components/ui-auth-register.vue"
+  "UiCode": {
+    "description": "Auto imported from components/ui/code.vue"
   },
   "UiDropdown": {
-    "description": "Auto imported from components/ui-dropdown.vue"
+    "description": "Auto imported from components/ui/dropdown.vue"
   },
   "UiField": {
-    "description": "Auto imported from components/ui-field.vue"
+    "description": "Auto imported from components/ui/field.vue"
   },
   "UiFile": {
-    "description": "Auto imported from components/ui-file.vue"
+    "description": "Auto imported from components/ui/file.vue"
   },
   "UiForm": {
-    "description": "Auto imported from components/ui-form.vue"
+    "description": "Auto imported from components/ui/form.vue"
+  },
+  "UiHtml": {
+    "description": "Auto imported from components/ui/html.vue"
   },
   "UiModal": {
-    "description": "Auto imported from components/ui-modal.vue"
+    "description": "Auto imported from components/ui/modal.vue"
   },
   "UiNav": {
-    "description": "Auto imported from components/ui-nav.vue"
+    "description": "Auto imported from components/ui/nav.vue"
   },
   "UiPassword": {
-    "description": "Auto imported from components/ui-password.vue"
+    "description": "Auto imported from components/ui/password.vue"
   },
   "UiPlayground": {
-    "description": "Auto imported from components/ui-playground.vue"
+    "description": "Auto imported from components/ui/playground.vue"
   },
   "UiSearch": {
-    "description": "Auto imported from components/ui-search.vue"
+    "description": "Auto imported from components/ui/search.vue"
   },
   "UiSidebar": {
-    "description": "Auto imported from components/ui-sidebar.vue"
+    "description": "Auto imported from components/ui/sidebar.vue"
   },
   "UiUpload": {
-    "description": "Auto imported from components/ui-upload.vue"
+    "description": "Auto imported from components/ui/upload.vue"
   },
   "UiContent": {
-    "description": "Auto imported from components/ui-content/index.vue"
+    "description": "Auto imported from components/ui/content/index.vue"
   },
   "UiContentStyle": {
-    "description": "Auto imported from components/ui-content/style.vue"
+    "description": "Auto imported from components/ui/content/style.vue"
   },
-  "UiEditorCode": {
-    "description": "Auto imported from components/ui-editor/code.vue"
+  "UiAuthLogin": {
+    "description": "Auto imported from components/ui/auth/login.vue"
   },
-  "UiEditorHtml": {
-    "description": "Auto imported from components/ui-editor/html.vue"
+  "UiAuthPassword": {
+    "description": "Auto imported from components/ui/auth/password.vue"
   },
-  "UiEditor": {
-    "description": "Auto imported from components/ui-editor/index.vue"
+  "UiAuthRegister": {
+    "description": "Auto imported from components/ui/auth/register.vue"
   },
   "UiContentElement": {
-    "description": "Auto imported from components/ui-content/element/index.js"
+    "description": "Auto imported from components/ui/content/element/index.js"
   },
   "UiContentElementHtmlEditor": {
-    "description": "Auto imported from components/ui-content/element/html/editor.vue"
+    "description": "Auto imported from components/ui/content/element/html/editor.vue"
   },
   "UiContentElementHtmlInfo": {
-    "description": "Auto imported from components/ui-content/element/html/info.js"
+    "description": "Auto imported from components/ui/content/element/html/info.js"
   },
   "UiContentElementHtmlRender": {
-    "description": "Auto imported from components/ui-content/element/html/render.vue"
+    "description": "Auto imported from components/ui/content/element/html/render.vue"
   },
   "UiContentElementPriceEditor": {
-    "description": "Auto imported from components/ui-content/element/price/editor.vue"
+    "description": "Auto imported from components/ui/content/element/price/editor.vue"
   },
   "UiContentElementPriceInfo": {
-    "description": "Auto imported from components/ui-content/element/price/info.js"
+    "description": "Auto imported from components/ui/content/element/price/info.js"
   },
   "UiContentElementPriceRender": {
-    "description": "Auto imported from components/ui-content/element/price/render.vue"
+    "description": "Auto imported from components/ui/content/element/price/render.vue"
   }
 }

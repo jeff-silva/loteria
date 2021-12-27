@@ -7,6 +7,13 @@
     "_name": "_24e9482b"
   },
   {
+    "name": "auth",
+    "path": "/auth",
+    "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\auth.vue",
+    "chunkName": "pages/auth",
+    "_name": "_e928efa0"
+  },
+  {
     "path": "/dev",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index.vue",
     "chunkName": "pages/dev/index",
@@ -69,6 +76,28 @@
       }
     ],
     "_name": "_2099eba5"
+  },
+  {
+    "path": "/loteria",
+    "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\loteria.vue",
+    "chunkName": "pages/loteria",
+    "children": [
+      {
+        "name": "loteria",
+        "path": "",
+        "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\loteria\\\\index.vue",
+        "chunkName": "pages/loteria/index",
+        "_name": "_12c31fc4"
+      },
+      {
+        "name": "loteria-type",
+        "path": ":type",
+        "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\loteria\\\\_type.vue",
+        "chunkName": "pages/loteria/_type",
+        "_name": "_1ffa438b"
+      }
+    ],
+    "_name": "_3e470a04"
   },
   {
     "name": "admin-files",

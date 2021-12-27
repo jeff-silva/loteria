@@ -5,6 +5,7 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _24e9482b = () => interopDefault(import('..\\client\\pages\\admin\\index.vue' /* webpackChunkName: "pages/admin/index" */))
+const _e928efa0 = () => interopDefault(import('..\\client\\pages\\auth.vue' /* webpackChunkName: "pages/auth" */))
 const _2099eba5 = () => interopDefault(import('..\\client\\pages\\dev\\index.vue' /* webpackChunkName: "pages/dev/index" */))
 const _5bebf53d = () => interopDefault(import('..\\client\\pages\\dev\\index\\index.vue' /* webpackChunkName: "pages/dev/index/index" */))
 const _6c86b765 = () => interopDefault(import('..\\client\\pages\\dev\\index\\artisan.vue' /* webpackChunkName: "pages/dev/index/artisan" */))
@@ -14,6 +15,9 @@ const _7458eb2e = () => interopDefault(import('..\\client\\pages\\dev\\index\\en
 const _e8532dd6 = () => interopDefault(import('..\\client\\pages\\dev\\index\\example.vue' /* webpackChunkName: "pages/dev/index/example" */))
 const _3ea42c62 = () => interopDefault(import('..\\client\\pages\\dev\\index\\files.vue' /* webpackChunkName: "pages/dev/index/files" */))
 const _18547dce = () => interopDefault(import('..\\client\\pages\\dev\\index\\nav.vue' /* webpackChunkName: "pages/dev/index/nav" */))
+const _3e470a04 = () => interopDefault(import('..\\client\\pages\\loteria.vue' /* webpackChunkName: "pages/loteria" */))
+const _12c31fc4 = () => interopDefault(import('..\\client\\pages\\loteria\\index.vue' /* webpackChunkName: "pages/loteria/index" */))
+const _1ffa438b = () => interopDefault(import('..\\client\\pages\\loteria\\_type.vue' /* webpackChunkName: "pages/loteria/_type" */))
 const _07a17f50 = () => interopDefault(import('..\\client\\pages\\admin\\files.vue' /* webpackChunkName: "pages/admin/files" */))
 const _1385dd6e = () => interopDefault(import('..\\client\\pages\\admin\\loterias\\index.vue' /* webpackChunkName: "pages/admin/loterias/index" */))
 const _76561bda = () => interopDefault(import('..\\client\\pages\\admin\\settings.vue' /* webpackChunkName: "pages/admin/settings" */))
@@ -40,6 +44,10 @@ export const routerOptions = {
     path: "/admin",
     component: _24e9482b,
     name: "admin"
+  }, {
+    path: "/auth",
+    component: _e928efa0,
+    name: "auth"
   }, {
     path: "/dev",
     component: _2099eba5,
@@ -75,6 +83,18 @@ export const routerOptions = {
       path: "nav",
       component: _18547dce,
       name: "dev-index-nav"
+    }]
+  }, {
+    path: "/loteria",
+    component: _3e470a04,
+    children: [{
+      path: "",
+      component: _12c31fc4,
+      name: "loteria"
+    }, {
+      path: ":type",
+      component: _1ffa438b,
+      name: "loteria-type"
     }]
   }, {
     path: "/admin/files",
