@@ -1,18 +1,28 @@
 <template>
-    <div>
-        <table class="table table-borderless">
+    <div class="loteria-numbers" v-infinite-scroll="infiniteScroll">
+        <table class="table table-sm table-bordered m-0">
+            <colgroup>
+                <col width="200px">
+                <col width="*">
+            </colgroup>
             <tbody>
-                <tr v-for="ns in _numbers">
-                    <td class="p-1" v-for="n in ns">
+                <tr v-for="s in _items">
+                    <td>
+                        <div>{{ s.number }}</div>
+                        <div>{{ s.date|dateFormat }}</div>
+                    </td>
+                    <td class="p-0">
                         <a href="javascript:;"
-                            class="btn w-100 rounded-0"
-                            :class="{'btn-primary':props.value.indexOf(n)>=0}"
-                            @click="numberToggle(n)"
-                        >{{ n }}</a>
+                            class="btn m-1 rounded-0"
+                            :class="btnClasses(nn)"
+                            style="font-family:monospace;"
+                            v-for="nn in s.numbersData"
+                        >{{ nn }}</a>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <!-- <pre>{{ $data }}</pre> -->
     </div>
 </template>
 
@@ -20,7 +30,7 @@
 export default {
     props: {
         value: Array,
-        loteria: Object,
+        items: Array,
     },
 
     watch: {
@@ -36,46 +46,33 @@ export default {
             this.$emit('change', this.props.value);
         },
 
-        numberToggle(n) {
-            let ns = Array.isArray(n)? n: [n];
-            ns.forEach(n => {
-                let index = this.props.value.indexOf(n);
-                if (index==-1) this.props.value.push(n);
-                else this.props.value.splice(index, 1);
-            });
-            this.emitValue();
-        },
-
-        numberSet(n) {
-            this.props.value = [];
-            let ns = Array.isArray(n)? n: [n];
-            ns.forEach(n => {
-                this.props.value.push(n);
-            });
-            this.emitValue();
-        },
-
-        arrayChunk(arr, size=5) {
-            return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => {
-                return arr.slice(i * size, i * size + size);
-            });
-        },
-    },
-
-    computed: {
-        _numbers() {
-            let loteria=this.props.loteria, numbers=[];
-            for(let n=loteria.tableNumberStart; n<=loteria.tableNumberFinal; n++) {
-                numbers.push(n.toString().padStart(2, '0'));
+        btnClasses(number) {
+            if (this.props.value.indexOf(number)>=0) {
+                return ['btn-primary'];
             }
-            return this.arrayChunk(numbers, loteria.tableNumberLine);
+            return ['btn-outline-primary'];
+        },
+
+        infiniteScroll() {
+            this.maxItems += 10;
         },
     },
 
     data() {
         return {
             props: JSON.parse(JSON.stringify(this.$props)),
+            maxItems: 10,
         };
+    },
+
+    computed: {
+        _items() {
+            let items = [...this.props.items];
+            if (items.length>=this.maxItems) {
+                items.length = this.maxItems;
+            }
+            return items;
+        },
     },
 }
 </script>

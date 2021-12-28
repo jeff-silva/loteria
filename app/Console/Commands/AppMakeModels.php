@@ -30,6 +30,8 @@ class AppMakeModels extends AppBase
                     '',
                     "\tprotected \$fillable = [\n\t\t'". implode("',\n\t\t'", array_keys($table['Fields'])) ."',\n\t];",
                     '',
+                    "\tprotected \$attributes = [];",
+                    '',
                     "\tpublic function validate(\$data=[]) {",
                     "\t\treturn \Validator::make(\$data, [",
                     "\t\t\t'name' => ['required'],",
@@ -42,10 +44,18 @@ class AppMakeModels extends AppBase
             $content = file_get_contents(base_path($table['ModelFile']));
             $me = $this;
             
+            // TODO: Fazer com que esse atributo faça merge com o que já existe na model
             // Criando protected $fillable
             $content = preg_replace_callback('/protected \$fillable(.+?);/s', function($finds) use($me, $table) {
                 $fillable = "'". implode("',\n\t\t'", array_keys($table['Fields'])) ."'";
                 return "protected \$fillable = [\n\t\t{$fillable}\n\t];";
+            }, $content);
+
+            // TODO: Fazer com que esse atributo faça merge com o que já existe na model
+            // Criando protected $attributes
+            $content = preg_replace_callback('/protected \$attributes(.+?);/s', function($finds) use($me, $table) {
+                $attributes = "'". implode("' => '',\n\t\t'", array_keys($table['Fields'])) ."' => ''";
+                return "protected \$attributes = [\n\t\t{$attributes}\n\t];";
             }, $content);
             
             file_put_contents(base_path($table['ModelFile']), $content);

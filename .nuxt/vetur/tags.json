@@ -2,6 +2,9 @@
   "LoteriaNumbers": {
     "description": "Auto imported from components/loteria/numbers.vue"
   },
+  "LoteriaTable": {
+    "description": "Auto imported from components/loteria/table.vue"
+  },
   "UiAddress": {
     "description": "Auto imported from components/ui/address.vue"
   },

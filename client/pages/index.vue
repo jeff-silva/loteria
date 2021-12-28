@@ -1,13 +1,15 @@
 <template>
   <div>
-    <nuxt-link to="/loteria">Loteria</nuxt-link>
+    <page-loteria></page-loteria>
   </div>
 </template>
 
 <script>
+import pageLoteria from './loteria';
+
 export default {
-  data() {
-    return {};
+  components: {
+    pageLoteria,
   },
 }
 </script>

@@ -9,7 +9,7 @@
     
             <!-- Content -->
             <div class="flex-grow-1" style="height:100vh; overflow:auto;">
-                <div class="ui-app-header shadow-sm">
+                <div class="ui-app-header shadow-sm" v-if="$slots.header || mobile">
                     <div class="d-flex align-items-center p-2">
                         <div class="pe-2 d-md-none">
                             <a href="javascript:;" @click="props.sidebar=true">
@@ -45,7 +45,21 @@ export default {
     data() {
         return {
             props: JSON.parse(JSON.stringify(this.$props)),
+            mobile: false,
         };
+    },
+
+    methods: {
+        isMobile() {
+            return window.innerWidth <= 768;
+        },
+    },
+
+    mounted() {
+        this.mobile = this.isMobile();
+        window.addEventListener('resize', ev => {
+            this.mobile = this.isMobile();
+        });
     },
 };
 </script>

@@ -25,6 +25,13 @@
 
 
 /*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
  * validate.js 0.13.1
  *
  * (c) 2013-2019 Nicklas Ansman, 2013 Wrapp
@@ -45,22 +52,7 @@
  * Released under the MIT License.
  */
 
-/*!
-Copyright (c) 2014 Taylor Hakes
-Copyright (c) 2014 Forbes Lindesay
- */
-
-/*! For license information please see ckeditor.js.LICENSE.txt */
-
-/*!*
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/*!*
-* @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-* For licensing, see LICENSE.md.
-*/
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /**
  * Checks if an event is supported in the current execution environment.
@@ -83,3 +75,7 @@ Copyright (c) 2014 Forbes Lindesay
  * @author	owenm    <owen23355@gmail.com>
  * @license MIT
  */
+
+//! moment.js
+
+//! moment.js locale configuration

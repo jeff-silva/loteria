@@ -16,6 +16,80 @@ class AppBase extends Command
         // 
     }
 
+    public function classEdit($class) {
+        return new class($class) {
+            public $name = false;
+            public $file = false;
+            public $lineStart = false;
+            public $lineFinal = false;
+
+            public function __construct($class) {
+                if (is_string($class)) {
+                    if ($realpath = realpath($class)) {
+        
+                        $classname = str_replace(base_path(), '', $realpath);
+                        $classname = str_replace('\app', '\App', $classname);
+                        $classname = preg_replace('/\..+?$/', '', $classname);
+                        
+                        $this->name = $classname;
+                    }
+                    else {
+                        $this->name = $class;
+                    }
+                }
+
+                if ($this->name) {
+                    $r = new \ReflectionClass($this->name);
+                    $this->file = $r->getFileName();
+                    $this->lineStart = $r->getStartLine()-1;
+                    $this->lineFinal = $r->getEndLine();
+                }
+            }
+
+            public function getSource($lineStart=null, $lineFinal=null) {
+                if ($this->file) {
+                    $lineStart = $lineStart===null? $this->lineStart: $lineStart;
+                    $lineFinal = $lineFinal===null? $this->lineFinal: $lineFinal;
+
+                    $lines = [];
+                    foreach(file($this->file) as $line => $content) {
+                        if ($line < $lineStart) continue;
+                        if ($line > $lineFinal) continue;
+                        $lines[] = $content;
+                    }
+                    return implode("\n", $lines);
+                }
+
+                return '';
+            }
+
+            public function methodWrite($methodName, $methodContent, $overwrite=false) {
+                $r = new \ReflectionClass($this->name);
+                $classSource = file_get_contents($this->file);
+
+                if (is_array($methodContent)) {
+                    $methodContent = implode("\n", $methodContent);
+                }
+
+                if ($r->hasMethod($methodName)) {
+                    if (!$overwrite) return false;
+                    $m = $r->getMethod($methodName);
+                    $lineStart = $m->getStartLine()-1;
+                    $lineFinal = $m->getEndLine()-1;
+                    $lines = file($this->file);
+                    array_splice($lines, $lineStart, $lineFinal-$lineStart+1, "{$methodContent}\n");
+                    $classSource = implode('', $lines);
+                }
+
+                else {
+                    $classSource = rtrim(rtrim($classSource), '}') ."\n". $methodContent ."\n\n}";
+                }
+                
+                file_put_contents($this->file, $classSource, true);
+            }
+        };
+    }
+
 
     public function getFieldSchema($field) {
         $field = (array) $field;

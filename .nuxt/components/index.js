@@ -1,4 +1,5 @@
 export { default as LoteriaNumbers } from '../..\\client\\components\\loteria\\numbers.vue'
+export { default as LoteriaTable } from '../..\\client\\components\\loteria\\table.vue'
 export { default as UiAddress } from '../..\\client\\components\\ui\\address.vue'
 export { default as UiApp } from '../..\\client\\components\\ui\\app.vue'
 export { default as UiCode } from '../..\\client\\components\\ui\\code.vue'

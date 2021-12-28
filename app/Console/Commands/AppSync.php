@@ -72,10 +72,16 @@ class AppSync extends AppBase
     }
 
     public function commandReplace($comm) {
-        if (!$comm->here_modified OR !$comm->there_modified) {
-            $filename = $comm->here_modified? $comm->here: $comm->there;
-            $this->comment("❌ {$filename}");
+        if (!$comm->here_modified) {
+            $this->comment("❌ {$comm->here} não existe");
             return;
+        }
+
+        if (!$comm->there_modified) {
+            $folder = pathinfo($comm->there, PATHINFO_DIRNAME);
+            if (!file_exists($folder)) { mkdir($folder, 0777, true); }
+            copy($comm->here, $comm->there);
+            $this->comment("⇈  {$comm->here}");
         }
 
         $comm->here_content = file_get_contents($comm->here);

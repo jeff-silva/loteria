@@ -6,33 +6,19 @@
 
         <div v-if="loteria">
             <div class="row">
-                <div class="col-6" style="max-height:400px; overflow:auto;">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Sorteio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="s in loteria.numbers">
-                                <td class="p-2">
-                                    <a href="javascript:;"
-                                        @click="$refs.loteriaNumbers.numberSet(s.numbersData)"
-                                    >{{ s.number }}</a>
-                                </td>
-                                <td class="p-0" v-for="n in s.numbersData">
-                                    <a href="javascript:;" class="btn w-100 rounded-0"
-                                        :class="{'btn-primary':numbers.indexOf(n)>=0}"
-                                        @click="$refs.loteriaNumbers.numberToggle(n)"
-                                    >{{ n }}</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-12 col-md-5">
+                    <loteria-table v-model="numbers" :loteria="loteria.type" ref="loteriaTable"></loteria-table>
+                    <div class="d-flex mt-2">
+                        <div><a href="javascript:;" class="btn btn-outline-primary" @click="$refs.loteriaTable.numberSet([])">Limpar tudo</a></div>
+                    </div>
                 </div>
-                
-                <div class="col-6">
-                    <loteria-numbers v-model="numbers" :loteria="loteria.type" ref="loteriaNumbers"></loteria-numbers>
+
+                <div class="col-12 col-md-7">
+                    <loteria-numbers v-model="numbers"
+                        :items="loteria.numbers"
+                        ref="loteriaNumbers"
+                        style="max-height:90vh; overflow:auto;"
+                    ></loteria-numbers>
                 </div>
             </div>
             <!-- <pre>{{ loteria }}</pre> -->
