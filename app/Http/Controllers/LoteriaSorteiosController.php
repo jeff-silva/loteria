@@ -41,32 +41,5 @@ class LoteriaSorteiosController extends Controller
 		$types = array_filter(explode(',', request('types')));
 		return \App\Models\LoteriaSorteios::sorteioSync($types);
 	}
-
-	public function search() {
-		return \App\Models\LoteriaSorteios::search()->paginate(request('per_page', 10));
-	}
-
-	public function find($id) {
-		return \App\Models\LoteriaSorteios::find($id);
-	}
-
-	public function save() {
-		return (new \App\Models\LoteriaSorteios)->store(request()->all());
-	}
-
-	public function valid() {
-		return \App\Models\LoteriaSorteios::new()->validate(request()->all());
-	}
-
-	public function remove($id) {
-		return \App\Models\LoteriaSorteios::search()->remove();
-	}
-
-	public function clone($id) {
-		return \App\Models\LoteriaSorteios::find($id)->clone();
-	}
-
-	public function export() {
-		return \App\Models\LoteriaSorteios::search()->export(export('format', 'csv'));
-	}
+	
 }

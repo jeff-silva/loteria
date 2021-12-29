@@ -21,30 +21,6 @@ class FilesController extends Controller
 		return $search;
 	}
 
-	public function find($id) {
-		return \App\Models\Files::find($id);
-	}
-
-	public function save() {
-		return (new \App\Models\Files)->store(request()->all());
-	}
-
-	public function valid() {
-		return \App\Models\Files::new()->validate(request()->all());
-	}
-
-	public function remove() {
-		return \App\Models\Files::search()->remove();
-	}
-
-	public function clone($id) {
-		return \App\Models\Files::find($id)->clone();
-	}
-
-	public function export() {
-		return \App\Models\Files::search()->export();
-	}
-
 	public function upload() {
 		return (new \App\Models\Files)->upload('file');
 	}

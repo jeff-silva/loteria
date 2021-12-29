@@ -20,32 +20,5 @@ class PersonalAccessTokensController extends Controller
 			'except' => [],
 		]);
 	}
-
-	public function search() {
-		return \App\Models\PersonalAccessTokens::search()->paginate(request('per_page', 10));
-	}
-
-	public function find($id) {
-		return \App\Models\PersonalAccessTokens::find($id);
-	}
-
-	public function save() {
-		return (new \App\Models\PersonalAccessTokens)->store(request()->all());
-	}
-
-	public function valid() {
-		return \App\Models\PersonalAccessTokens::new()->validate(request()->all());
-	}
-
-	public function remove($id) {
-		return \App\Models\PersonalAccessTokens::search()->remove();
-	}
-
-	public function clone($id) {
-		return \App\Models\PersonalAccessTokens::find($id)->clone();
-	}
-
-	public function export() {
-		return \App\Models\PersonalAccessTokens::search()->export(export('format', 'csv'));
-	}
+	
 }

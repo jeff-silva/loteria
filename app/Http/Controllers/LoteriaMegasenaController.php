@@ -20,32 +20,5 @@ class LoteriaMegasenaController extends Controller
 			'except' => [],
 		]);
 	}
-
-	public function search() {
-		return \App\Models\LoteriaMegasena::search()->paginate(request('per_page', 10));
-	}
-
-	public function find($id) {
-		return \App\Models\LoteriaMegasena::find($id);
-	}
-
-	public function save() {
-		return (new \App\Models\LoteriaMegasena)->store(request()->all());
-	}
-
-	public function valid() {
-		return \App\Models\LoteriaMegasena::new()->validate(request()->all());
-	}
-
-	public function remove($id) {
-		return \App\Models\LoteriaMegasena::search()->remove();
-	}
-
-	public function clone($id) {
-		return \App\Models\LoteriaMegasena::find($id)->clone();
-	}
-
-	public function export() {
-		return \App\Models\LoteriaMegasena::search()->export(export('format', 'csv'));
-	}
+	
 }
