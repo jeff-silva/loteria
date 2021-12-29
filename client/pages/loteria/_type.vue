@@ -7,6 +7,7 @@
         <div v-if="loteria">
             <div class="row">
                 <div class="col-12 col-md-5">
+                    <h3>Simulador de aposta</h3>
                     <loteria-table v-model="numbers" :loteria="loteria.type" ref="loteriaTable"></loteria-table>
                     <div class="d-flex mt-2">
                         <div><a href="javascript:;" class="btn btn-outline-primary" @click="$refs.loteriaTable.numberSet([])">Limpar tudo</a></div>
@@ -14,6 +15,7 @@
                 </div>
 
                 <div class="col-12 col-md-7">
+                    <h3>Todos os sorteios</h3>
                     <loteria-numbers v-model="numbers"
                         :items="loteria.numbers"
                         ref="loteriaNumbers"

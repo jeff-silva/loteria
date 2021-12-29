@@ -1,12 +1,12 @@
 <template>
     <div class="loteria-table">
-        <table class="table table-bordered m-0">
+        <table class="table table-striped table-borderless shadow-sm m-0">
             <tbody>
                 <tr v-for="ns in _numbers">
                     <td class="p-1" v-for="n in ns">
                         <a href="javascript:;"
                             class="btn w-100 rounded-0"
-                            :class="{'btn-primary':props.value.indexOf(n)>=0}"
+                            :class="btnClasses(n)"
                             @click="numberToggle(n)"
                         >{{ n }}</a>
                     </td>
@@ -59,6 +59,13 @@ export default {
             return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => {
                 return arr.slice(i * size, i * size + size);
             });
+        },
+
+        btnClasses(number) {
+            if (this.props.value.indexOf(number)>=0) {
+                return ['btn-primary'];
+            }
+            return ['btn-outline-primary'];
         },
     },
 

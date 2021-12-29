@@ -131,8 +131,14 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 
 	static function sorteioSync($types=[]) {
 		$return = [];
-		$types = empty($types)? array_keys(self::sorteioTypes()): $types;
 
+		if (empty($types)) {
+			foreach(self::sorteioTypes() as $type) {
+				$types[] = $type['id'];
+			}
+		}
+
+		
 		foreach($types as $type) {
 			if ($type = self::sorteioType($type)) {
 				$self = new self;

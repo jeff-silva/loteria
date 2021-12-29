@@ -1,6 +1,6 @@
 <template>
     <div class="loteria-numbers" v-infinite-scroll="infiniteScroll">
-        <table class="table table-sm table-bordered m-0">
+        <table class="table table-sm table-striped table-borderless m-0">
             <colgroup>
                 <col width="200px">
                 <col width="*">
@@ -8,10 +8,12 @@
             <tbody>
                 <tr v-for="s in _items">
                     <td>
-                        <div>{{ s.number }}</div>
-                        <div>{{ s.date|dateFormat }}</div>
+                        <a href="javascript:;" @click="emitValue(s.numbersData)">
+                            <div>{{ s.number }}</div>
+                            <div>{{ s.date|dateFormat }}</div>
+                        </a>
                     </td>
-                    <td class="p-0">
+                    <td class="px-0 py-1" valign="middle">
                         <a href="javascript:;"
                             class="btn m-1 rounded-0"
                             :class="btnClasses(nn)"
@@ -40,7 +42,8 @@ export default {
     },
 
     methods: {
-        emitValue() {
+        emitValue(value=null) {
+            if (value!==null) { this.props.value = value; }
             this.$emit('value', this.props.value);
             this.$emit('input', this.props.value);
             this.$emit('change', this.props.value);
