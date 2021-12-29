@@ -23,9 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Bugfix: SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes
-        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
-
         if (! \Schema::hasTable('settings')) return;
         
         // $settings = \Cache::remember('settings', 60*60, function() {
