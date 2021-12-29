@@ -51,7 +51,10 @@ class User extends Authenticatable implements JWTSubject
 
     public static function booted() {
         self::created(function($model) {
-            (new \App\Mail\UserWelcome($model))->sendTo($model->email);
+            try {
+                (new \App\Mail\UserWelcome($model))->sendTo($model->email);
+            }
+            catch(\Exception $e) {}
         });
     }
 
