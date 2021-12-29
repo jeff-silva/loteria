@@ -17,7 +17,7 @@ class LoteriaSorteiosController extends Controller
 
 	public function __construct() {
 		$this->middleware('auth:api', [
-			'except' => ['type'],
+			'except' => ['type', 'sync'],
 		]);
 	}
 
