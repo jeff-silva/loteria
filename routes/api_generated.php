@@ -7,8 +7,6 @@ ou "php artisan app:dev" para gerar todos os arquivos. */
 \App\Http\Controllers\AddressesController::router();
 \App\Http\Controllers\FailedJobsController::router();
 \App\Http\Controllers\FilesController::router();
-\App\Http\Controllers\LoteriaLotofacilController::router();
-\App\Http\Controllers\LoteriaMegasenaController::router();
 \App\Http\Controllers\LoteriaSorteiosController::router();
 \App\Http\Controllers\MigrationsController::router();
 \App\Http\Controllers\PasswordResetsController::router();
@@ -160,70 +158,6 @@ return [
 	'files_export' => [
 		'call' => ['Illuminate\Support\Facades\Route', 'get'],
 		'params' => ['files/export', 'App\Http\Controllers\FilesController@export'],
-	],
-	'loteria_lotofacil_search' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'get'],
-		'params' => ['loteria-lotofacil/search', 'App\Http\Controllers\LoteriaLotofacilController@search'],
-	],
-	'loteria_lotofacil_find' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'get'],
-		'params' => ['loteria-lotofacil/find/{id}', 'App\Http\Controllers\LoteriaLotofacilController@find'],
-	],
-	'loteria_lotofacil_save' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-lotofacil/save', 'App\Http\Controllers\LoteriaLotofacilController@save'],
-	],
-	'loteria_lotofacil_valid' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-lotofacil/valid', 'App\Http\Controllers\LoteriaLotofacilController@valid'],
-	],
-	'loteria_lotofacil_remove' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-lotofacil/remove', 'App\Http\Controllers\LoteriaLotofacilController@remove'],
-	],
-	'loteria_lotofacil_clone' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-lotofacil/clone/{id}', 'App\Http\Controllers\LoteriaLotofacilController@clone'],
-	],
-	'loteria_lotofacil_import' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-lotofacil/import', 'App\Http\Controllers\LoteriaLotofacilController@import'],
-	],
-	'loteria_lotofacil_export' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'get'],
-		'params' => ['loteria-lotofacil/export', 'App\Http\Controllers\LoteriaLotofacilController@export'],
-	],
-	'loteria_megasena_search' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'get'],
-		'params' => ['loteria-megasena/search', 'App\Http\Controllers\LoteriaMegasenaController@search'],
-	],
-	'loteria_megasena_find' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'get'],
-		'params' => ['loteria-megasena/find/{id}', 'App\Http\Controllers\LoteriaMegasenaController@find'],
-	],
-	'loteria_megasena_save' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-megasena/save', 'App\Http\Controllers\LoteriaMegasenaController@save'],
-	],
-	'loteria_megasena_valid' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-megasena/valid', 'App\Http\Controllers\LoteriaMegasenaController@valid'],
-	],
-	'loteria_megasena_remove' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-megasena/remove', 'App\Http\Controllers\LoteriaMegasenaController@remove'],
-	],
-	'loteria_megasena_clone' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-megasena/clone/{id}', 'App\Http\Controllers\LoteriaMegasenaController@clone'],
-	],
-	'loteria_megasena_import' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'post'],
-		'params' => ['loteria-megasena/import', 'App\Http\Controllers\LoteriaMegasenaController@import'],
-	],
-	'loteria_megasena_export' => [
-		'call' => ['Illuminate\Support\Facades\Route', 'get'],
-		'params' => ['loteria-megasena/export', 'App\Http\Controllers\LoteriaMegasenaController@export'],
 	],
 	'loteria_sorteios_search' => [
 		'call' => ['Illuminate\Support\Facades\Route', 'get'],

@@ -36,6 +36,10 @@ export const state = {
             "description": "Cria tabelas e colunas no banco baseado na estrutura salva em config\/database-schema.php"
         },
         {
+            "name": "app:deploy",
+            "description": "Utilize este comando no servidor para deploy da aplica\u00e7\u00e3o"
+        },
+        {
             "name": "app:dev",
             "description": "Utilize este comando sempre que alterar algo no banco de dados ou nos arquivos em app\/Formats"
         },

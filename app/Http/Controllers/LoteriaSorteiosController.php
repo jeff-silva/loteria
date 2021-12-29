@@ -17,7 +17,7 @@ class LoteriaSorteiosController extends Controller
 
 	public function __construct() {
 		$this->middleware('auth:api', [
-			'except' => ['type', 'types', 'sync'],
+			'except' => ['type', 'types', 'sync', 'analysis'],
 		]);
 	}
 
@@ -25,6 +25,7 @@ class LoteriaSorteiosController extends Controller
 		\Route::get('loteria-sorteios/types', 'App\Http\Controllers\LoteriaSorteiosController@types');
 		\Route::get('loteria-sorteios/type/{type}', 'App\Http\Controllers\LoteriaSorteiosController@type');
 		\Route::get('loteria-sorteios/sync', 'App\Http\Controllers\LoteriaSorteiosController@sync');
+		\Route::get('loteria-sorteios/analysis', 'App\Http\Controllers\LoteriaSorteiosController@analysis');
 	}
 
 	public function types() {
@@ -40,6 +41,12 @@ class LoteriaSorteiosController extends Controller
 	public function sync() {
 		$types = array_filter(explode(',', request('types')));
 		return \App\Models\LoteriaSorteios::sorteioSync($types);
+	}
+	
+	public function analysis() {
+		$numbers = request('numbers', []);
+		$numbers = is_array($numbers)? $numbers: array_filter(explode(',', $numbers));
+		return \App\Models\LoteriaSorteios::sorteioAnalysis(request('typeid'), $numbers);
 	}
 	
 }

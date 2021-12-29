@@ -185,4 +185,12 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 
 		return $returns;
 	}
+
+	public function sorteioAnalysis($typeid, $numbers) {
+		if ($type = self::sorteioType($typeid)) {
+			return [$type, $numbers];
+		}
+
+		return false;
+	}
 }

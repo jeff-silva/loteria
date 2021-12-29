@@ -1,4 +1,13 @@
 {
+  "LoteriaAnalysis": {
+    "description": "Auto imported from components/loteria/analysis.vue"
+  },
+  "LoteriaNumbers": {
+    "description": "Auto imported from components/loteria/numbers.vue"
+  },
+  "LoteriaTable": {
+    "description": "Auto imported from components/loteria/table.vue"
+  },
   "UiAddress": {
     "description": "Auto imported from components/ui/address.vue"
   },
@@ -44,11 +53,11 @@
   "UiUpload": {
     "description": "Auto imported from components/ui/upload.vue"
   },
-  "LoteriaNumbers": {
-    "description": "Auto imported from components/loteria/numbers.vue"
+  "UiContent": {
+    "description": "Auto imported from components/ui/content/index.vue"
   },
-  "LoteriaTable": {
-    "description": "Auto imported from components/loteria/table.vue"
+  "UiContentStyle": {
+    "description": "Auto imported from components/ui/content/style.vue"
   },
   "UiAuthLogin": {
     "description": "Auto imported from components/ui/auth/login.vue"
@@ -59,23 +68,8 @@
   "UiAuthRegister": {
     "description": "Auto imported from components/ui/auth/register.vue"
   },
-  "UiContent": {
-    "description": "Auto imported from components/ui/content/index.vue"
-  },
-  "UiContentStyle": {
-    "description": "Auto imported from components/ui/content/style.vue"
-  },
   "UiContentElement": {
     "description": "Auto imported from components/ui/content/element/index.js"
-  },
-  "UiContentElementHtmlEditor": {
-    "description": "Auto imported from components/ui/content/element/html/editor.vue"
-  },
-  "UiContentElementHtmlInfo": {
-    "description": "Auto imported from components/ui/content/element/html/info.js"
-  },
-  "UiContentElementHtmlRender": {
-    "description": "Auto imported from components/ui/content/element/html/render.vue"
   },
   "UiContentElementPriceEditor": {
     "description": "Auto imported from components/ui/content/element/price/editor.vue"
@@ -85,5 +79,14 @@
   },
   "UiContentElementPriceRender": {
     "description": "Auto imported from components/ui/content/element/price/render.vue"
+  },
+  "UiContentElementHtmlEditor": {
+    "description": "Auto imported from components/ui/content/element/html/editor.vue"
+  },
+  "UiContentElementHtmlInfo": {
+    "description": "Auto imported from components/ui/content/element/html/info.js"
+  },
+  "UiContentElementHtmlRender": {
+    "description": "Auto imported from components/ui/content/element/html/render.vue"
   }
 }
