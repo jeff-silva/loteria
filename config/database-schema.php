@@ -9,7 +9,7 @@ return [
       'Name' => 'addresses',
       'Engine' => 'InnoDB',
       'Auto_increment' => 1,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'Addresses',
       'ModelNamespace' => '\\App\\Models',
@@ -17,7 +17,7 @@ return [
       'Controller' => 'AddressesController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\AddressesController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `addresses` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `route` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `number` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `complement` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `zipcode` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `district` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `city` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `state` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `st` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `country` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `co` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `lat` decimal(11,8) DEFAULT NULL,  `lng` decimal(11,8) DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `addresses` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,  `route` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,  `number` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,  `complement` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,  `zipcode` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,  `district` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `city` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `state` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `st` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,  `country` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `co` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,  `lat` decimal(11,8) DEFAULT NULL,  `lng` decimal(11,8) DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
@@ -169,7 +169,7 @@ return [
       'Name' => 'failed_jobs',
       'Engine' => 'InnoDB',
       'Auto_increment' => 1,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'FailedJobs',
       'ModelNamespace' => '\\App\\Models',
@@ -177,7 +177,7 @@ return [
       'Controller' => 'FailedJobsController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\FailedJobsController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `failed_jobs` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,  PRIMARY KEY (`id`),  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `failed_jobs` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `uuid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `connection` text COLLATE utf8_unicode_ci NOT NULL,  `queue` text COLLATE utf8_unicode_ci NOT NULL,  `payload` longtext COLLATE utf8_unicode_ci NOT NULL,  `exception` longtext COLLATE utf8_unicode_ci NOT NULL,  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,  PRIMARY KEY (`id`),  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
@@ -248,7 +248,7 @@ return [
       'Name' => 'files',
       'Engine' => 'InnoDB',
       'Auto_increment' => 1,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'Files',
       'ModelNamespace' => '\\App\\Models',
@@ -256,7 +256,7 @@ return [
       'Controller' => 'FilesController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\FilesController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `files` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `mime` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `ext` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `size` int(11) DEFAULT NULL,  `folder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `url` text COLLATE utf8mb4_unicode_ci NOT NULL,  `base64` longtext COLLATE utf8mb4_unicode_ci NOT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  `deleted_at` datetime DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `files` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,  `mime` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `ext` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,  `size` int(11) DEFAULT NULL,  `folder` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,  `url` text COLLATE utf8_unicode_ci NOT NULL,  `base64` longtext COLLATE utf8_unicode_ci NOT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  `deleted_at` datetime DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
@@ -511,7 +511,7 @@ return [
     'loteria_sorteios' => [
       'Name' => 'loteria_sorteios',
       'Engine' => 'InnoDB',
-      'Auto_increment' => 1,
+      'Auto_increment' => 4818,
       'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'LoteriaSorteios',
@@ -520,7 +520,7 @@ return [
       'Controller' => 'LoteriaSorteiosController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\LoteriaSorteiosController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `loteria_sorteios` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `slug` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `number` int(11) DEFAULT NULL,  `numbers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `date` datetime DEFAULT NULL,  `created_at` datetime DEFAULT NULL,  `updated_at` datetime DEFAULT NULL,  PRIMARY KEY (`id`) USING BTREE) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `loteria_sorteios` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `slug` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `number` int(11) DEFAULT NULL,  `numbers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,  `date` datetime DEFAULT NULL,  `created_at` datetime DEFAULT NULL,  `updated_at` datetime DEFAULT NULL,  PRIMARY KEY (`id`) USING BTREE) ENGINE=InnoDB AUTO_INCREMENT=4818 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
@@ -600,7 +600,7 @@ return [
       'Name' => 'migrations',
       'Engine' => 'InnoDB',
       'Auto_increment' => 8,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'Migrations',
       'ModelNamespace' => '\\App\\Models',
@@ -608,7 +608,7 @@ return [
       'Controller' => 'MigrationsController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\MigrationsController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `migrations` (  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `batch` int(11) NOT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `migrations` (  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `batch` int(11) NOT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
@@ -643,7 +643,7 @@ return [
       'Name' => 'password_resets',
       'Engine' => 'InnoDB',
       'Auto_increment' => NULL,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'PasswordResets',
       'ModelNamespace' => '\\App\\Models',
@@ -651,7 +651,7 @@ return [
       'Controller' => 'PasswordResetsController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\PasswordResetsController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `password_resets` (  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `created_at` timestamp NULL DEFAULT NULL,  KEY `password_resets_email_index` (`email`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `password_resets` (  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `created_at` timestamp NULL DEFAULT NULL,  KEY `password_resets_email_index` (`email`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'email' => [
           'Field' => 'email',
@@ -686,7 +686,7 @@ return [
       'Name' => 'personal_access_tokens',
       'Engine' => 'InnoDB',
       'Auto_increment' => 1,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'PersonalAccessTokens',
       'ModelNamespace' => '\\App\\Models',
@@ -694,7 +694,7 @@ return [
       'Controller' => 'PersonalAccessTokensController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\PersonalAccessTokensController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `personal_access_tokens` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `tokenable_id` bigint(20) unsigned NOT NULL,  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,  `abilities` text COLLATE utf8mb4_unicode_ci,  `last_used_at` timestamp NULL DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`),  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `personal_access_tokens` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `tokenable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `tokenable_id` bigint(20) unsigned NOT NULL,  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `token` varchar(64) COLLATE utf8_unicode_ci NOT NULL,  `abilities` text COLLATE utf8_unicode_ci,  `last_used_at` timestamp NULL DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`),  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
@@ -783,7 +783,7 @@ return [
       'Name' => 'settings',
       'Engine' => 'InnoDB',
       'Auto_increment' => 1,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'Settings',
       'ModelNamespace' => '\\App\\Models',
@@ -791,7 +791,7 @@ return [
       'Controller' => 'SettingsController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\SettingsController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `settings` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,  `model` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `settings` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `value` text COLLATE utf8_unicode_ci NOT NULL,  `model` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
@@ -853,7 +853,7 @@ return [
       'Name' => 'users',
       'Engine' => 'InnoDB',
       'Auto_increment' => 2,
-      'Collation' => 'utf8mb4_unicode_ci',
+      'Collation' => 'utf8_unicode_ci',
       'Comment' => '',
       'Model' => 'User',
       'ModelNamespace' => '\\App\\Models',
@@ -861,7 +861,7 @@ return [
       'Controller' => 'UsersController',
       'ControllerNamespace' => '\\App\\Http\\Controllers',
       'ControllerFile' => '\\app\\Http\\Controllers\\UsersController.php',
-      'Sql' => 'CREATE TABLE IF NOT EXISTS `users` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `email_verified_at` timestamp NULL DEFAULT NULL,  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,  `address_id` int(11) DEFAULT NULL,  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`),  UNIQUE KEY `users_email_unique` (`email`)) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
+      'Sql' => 'CREATE TABLE IF NOT EXISTS `users` (  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `email_verified_at` timestamp NULL DEFAULT NULL,  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,  `address_id` int(11) DEFAULT NULL,  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,  `created_at` timestamp NULL DEFAULT NULL,  `updated_at` timestamp NULL DEFAULT NULL,  PRIMARY KEY (`id`),  UNIQUE KEY `users_email_unique` (`email`)) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
       'Fields' => [
         'id' => [
           'Field' => 'id',
