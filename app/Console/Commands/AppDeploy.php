@@ -10,9 +10,9 @@ class AppDeploy extends AppBase
     public function handle()
     {   
         $this->call('optimize:clear');
-        $this->call('app:db-import');
         $this->call('migrate');
         $this->call('db:seed');
+        $this->call('app:db-import');
         $this->call('optimize:clear');
     }
 }
