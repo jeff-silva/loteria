@@ -50,12 +50,6 @@
   "UiUpload": {
     "description": "Auto imported from components/ui/upload.vue"
   },
-  "UiContent": {
-    "description": "Auto imported from components/ui/content/index.vue"
-  },
-  "UiContentStyle": {
-    "description": "Auto imported from components/ui/content/style.vue"
-  },
   "UiAuthLogin": {
     "description": "Auto imported from components/ui/auth/login.vue"
   },
@@ -64,6 +58,12 @@
   },
   "UiAuthRegister": {
     "description": "Auto imported from components/ui/auth/register.vue"
+  },
+  "UiContent": {
+    "description": "Auto imported from components/ui/content/index.vue"
+  },
+  "UiContentStyle": {
+    "description": "Auto imported from components/ui/content/style.vue"
   },
   "UiContentElement": {
     "description": "Auto imported from components/ui/content/element/index.js"
