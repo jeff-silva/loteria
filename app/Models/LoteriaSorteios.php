@@ -177,7 +177,7 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 					];
 				});
 
-				$return = $return[0];
+				// $return = $return[0];
 				$return['type'] = $type;
 				$returns[] = $return;
 			}
@@ -188,9 +188,22 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 
 	public function sorteioAnalysis($typeid, $numbers) {
 		if ($type = self::sorteioType($typeid)) {
-			return [$type, $numbers];
+			if (empty($numbers)) { return []; }
+			return (new self)->where('type', $typeid)
+				->withNumbers($numbers)
+				->orderBy('id', 'desc')
+				->get();
 		}
 
 		return false;
+	}
+
+	public function scopeWithNumbers($query, $numbers=[]) {
+		if (empty($numbers)) return $query;
+		return $query->where(function($q) use($numbers) {
+			foreach($numbers as $number) {
+				$q->where('numbers', 'like', "%{$number}%");
+			}
+		});
 	}
 }

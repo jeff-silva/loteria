@@ -185,4 +185,19 @@ trait Model
 
         return $query;
     }
+
+    public static function scopeToRawSql($query)
+    {
+        $sqlQuery = \Str::replaceArray('?', collect($query->getBindings())->map(function ($i) {
+            if (is_object($i)) { $i = (string)$i; }
+            return (is_string($i)) ? "'$i'" : $i;
+        })->all(), $query->toSql());
+
+        $sqlQuery = preg_replace_callback('/select (.+?) from/', function($m) {
+            return "SELECT\n\t". str_replace(', ', ",\n\t", $m[1]) ."\nFROM";
+        }, $sqlQuery);
+
+        $sqlQuery = preg_replace('/(join|left join|right join|inner join|having|where|order by)/', "\n\$1", $sqlQuery);
+        return $sqlQuery;
+    }
 }

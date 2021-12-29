@@ -6,7 +6,7 @@
                 <col width="*">
             </colgroup>
             <tbody>
-                <tr v-for="s in _items">
+                <tr v-for="s in _sorteios">
                     <td>
                         <a href="javascript:;" @click="emitValue(s.numbersData)">
                             <div>{{ s.number }}</div>
@@ -32,7 +32,7 @@
 export default {
     props: {
         value: Array,
-        items: Array,
+        sorteios: Array,
     },
 
     watch: {
@@ -69,12 +69,12 @@ export default {
     },
 
     computed: {
-        _items() {
-            let items = [...this.props.items];
-            if (items.length>=this.maxItems) {
-                items.length = this.maxItems;
+        _sorteios() {
+            let sorteios = [...this.props.sorteios];
+            if (sorteios.length>=this.maxItems) {
+                sorteios.length = this.maxItems;
             }
-            return items;
+            return sorteios;
         },
     },
 }

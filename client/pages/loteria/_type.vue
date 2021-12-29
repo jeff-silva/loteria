@@ -20,7 +20,10 @@
                     <div class="card mb-3">
                         <div class="card-header">Análise</div>
                         <div class="card-body" style="overflow:auto;">
-                            <loteria-analysis v-model="numbers" :loteria="loteria.type"></loteria-analysis>
+                            <loteria-analysis v-model="numbers"
+                                :loteria="loteria.type"
+                                :sorteios="loteria.numbers"
+                            ></loteria-analysis>
                         </div>
                     </div>
                 </div>
@@ -30,7 +33,7 @@
                         <div class="card-header">Todos os sorteios</div>
                         <div class="card-body" style="overflow:auto;">
                             <loteria-numbers v-model="numbers"
-                                :items="loteria.numbers"
+                                :sorteios="loteria.numbers"
                                 ref="loteriaNumbers"
                                 style="max-height:90vh; overflow:auto;"
                             ></loteria-numbers>
