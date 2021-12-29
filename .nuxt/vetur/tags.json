@@ -1,10 +1,4 @@
 {
-  "LoteriaNumbers": {
-    "description": "Auto imported from components/loteria/numbers.vue"
-  },
-  "LoteriaTable": {
-    "description": "Auto imported from components/loteria/table.vue"
-  },
   "UiAddress": {
     "description": "Auto imported from components/ui/address.vue"
   },
@@ -49,6 +43,12 @@
   },
   "UiUpload": {
     "description": "Auto imported from components/ui/upload.vue"
+  },
+  "LoteriaNumbers": {
+    "description": "Auto imported from components/loteria/numbers.vue"
+  },
+  "LoteriaTable": {
+    "description": "Auto imported from components/loteria/table.vue"
   },
   "UiAuthLogin": {
     "description": "Auto imported from components/ui/auth/login.vue"

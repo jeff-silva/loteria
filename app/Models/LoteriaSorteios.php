@@ -130,7 +130,7 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 	}
 
 	static function sorteioSync($types=[]) {
-		$return = [];
+		$returns = [];
 
 		if (empty($types)) {
 			foreach(self::sorteioTypes() as $type) {
@@ -143,13 +143,16 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 			if ($type = self::sorteioType($type)) {
 				$self = new self;
 				$scraper_url = "http://loterias.caixa.gov.br/wps/portal/loterias/landing/{$type['id']}/";
+				$return = ['page1_url' => $scraper_url];
 				$page1 = (new \Goutte\Client())->request('GET', $scraper_url);
 
-				$page1->filter('.title.zeta')->each(function($node) use($page1, $self, $scraper_url, $type, $return) {
+				$page1->filter('.title.zeta')->each(function($node) use($page1, $self, $scraper_url, $type, $returns) {
 					$result_page = implode('', [
 						$page1->getBaseHref(),
 						collect($node->extract(['href']))->first(),
 					]);
+
+					$return['page2_url'] = $result_page;
 		
 					$page2 = (new \GuzzleHttp\Client)->get($result_page, [
 						'cookies' => new \GuzzleHttp\Cookie\CookieJar,
@@ -166,14 +169,17 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 								$item['slug'] = "{$type['id']}-{$item['number']}";
 								$item['type'] = $type['id'];
 
-								$return[] = self::firstOrCreate(['slug' => $item['slug']], $item);
+								// $return['item'] = self::firstOrCreate(['slug' => $item['slug']], $item);
 							}
 						}
 					}
 				});
+
+				$return['type'] = $type;
+				$returns[] = $return;
 			}
 		}
 
-		return $return;
+		return $returns;
 	}
 }
