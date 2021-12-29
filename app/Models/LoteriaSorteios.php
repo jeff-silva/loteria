@@ -144,6 +144,7 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 				$self = new self;
 				$scraper_url = "http://loterias.caixa.gov.br/wps/portal/loterias/landing/{$type['id']}/";
 				$page1 = (new \Goutte\Client())->request('GET', $scraper_url);
+				dd($page1);
 
 				$return = $page1->filter('.title.zeta')->each(function($node) use($page1, $self, $scraper_url, $type, $returns) {
 					$result_page = implode('', [
