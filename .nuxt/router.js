@@ -10,6 +10,7 @@ const _2099eba5 = () => interopDefault(import('..\\client\\pages\\dev\\index.vue
 const _5bebf53d = () => interopDefault(import('..\\client\\pages\\dev\\index\\index.vue' /* webpackChunkName: "pages/dev/index/index" */))
 const _6c86b765 = () => interopDefault(import('..\\client\\pages\\dev\\index\\artisan.vue' /* webpackChunkName: "pages/dev/index/artisan" */))
 const _6520f9e6 = () => interopDefault(import('..\\client\\pages\\dev\\index\\auth.vue' /* webpackChunkName: "pages/dev/index/auth" */))
+const _9892694e = () => interopDefault(import('..\\client\\pages\\dev\\index\\bootstrap.vue' /* webpackChunkName: "pages/dev/index/bootstrap" */))
 const _ca3445dc = () => interopDefault(import('..\\client\\pages\\dev\\index\\editor.vue' /* webpackChunkName: "pages/dev/index/editor" */))
 const _7458eb2e = () => interopDefault(import('..\\client\\pages\\dev\\index\\endpoints.vue' /* webpackChunkName: "pages/dev/index/endpoints" */))
 const _e8532dd6 = () => interopDefault(import('..\\client\\pages\\dev\\index\\example.vue' /* webpackChunkName: "pages/dev/index/example" */))
@@ -63,6 +64,10 @@ export const routerOptions = {
       path: "auth",
       component: _6520f9e6,
       name: "dev-index-auth"
+    }, {
+      path: "bootstrap",
+      component: _9892694e,
+      name: "dev-index-bootstrap"
     }, {
       path: "editor",
       component: _ca3445dc,

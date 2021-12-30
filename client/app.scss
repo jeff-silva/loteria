@@ -6,7 +6,7 @@
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/flatly/bootstrap.min.css');
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/journal/bootstrap.min.css');
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/litera/bootstrap.min.css');
-// @import url('//unpkg.com/bootswatch@5.1.3/dist/lumen/bootstrap.min.css');
+@import url('//unpkg.com/bootswatch@5.1.3/dist/lumen/bootstrap.min.css');
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/lux/bootstrap.min.css');
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/materia/bootstrap.min.css');
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/minty/bootstrap.min.css');
@@ -23,7 +23,7 @@
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/united/bootstrap.min.css');
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/vapor/bootstrap.min.css');
 // @import url('//unpkg.com/bootswatch@5.1.3/dist/yeti/bootstrap.min.css');
-@import url('//unpkg.com/bootswatch@5.1.3/dist/zephyr/bootstrap.min.css');
+// @import url('//unpkg.com/bootswatch@5.1.3/dist/zephyr/bootstrap.min.css');
 
 @import url('//cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 @import url('//cdnjs.cloudflare m/ajax/libs/font-awesome/5.15.2/css/all.min.css');
@@ -41,3 +41,10 @@
 .scrollbar-thin-dark::-webkit-scrollbar-track {background-color: transparent;}
 .scrollbar-thin-dark::-webkit-scrollbar {width: 10px; background-color: transparent;}
 .scrollbar-thin-dark::-webkit-scrollbar-thumb { background-color: #ffffff44;}
+
+// Bootstrap custom
+.btn-primary {background-color: green !important; border-color:green;}
+.btn-outline-primary {border-color: green !important; color:green;}
+.btn-primary:hover, .btn-outline-primary:hover {background-color: green !important;}
+.bg-primary {background-color: green !important;}
+.border-primary {border-color: green !important;}

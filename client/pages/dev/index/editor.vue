@@ -1,7 +1,7 @@
 <template>
     <div>
-        <ui-playground class="mb-4" value="<ui-editor type='html' value='Hello World'></ui-editor>"></ui-playground>
-        <ui-playground class="mb-4" value="<ui-editor type='code' value='Hello World'></ui-editor>"></ui-playground>
+        <ui-playground class="mb-4" value="<ui-html value='Hello World'></ui-html>"></ui-playground>
+        <ui-playground class="mb-4" value="<ui-code value='Hello World'></ui-code>"></ui-playground>
     </div>
 </template>
 

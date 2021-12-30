@@ -1,5 +1,5 @@
 <template>
-    <div class="ui-nav">
+    <div :class="`ui-nav ui-nav-${mode}`">
         <el-menu :default-active="propsValue" :mode="mode"
             @select="emitValue($event)" background-color="transparent"
             :text-color="textColor" :active-text-color="textColor"
@@ -89,6 +89,6 @@ export default {
 .ui-nav-submenu {background: #fff !important;}
 .ui-nav-submenu .el-menu-item, .ui-nav-submenu .el-submenu__title {background: none !important; color: #666 !important;}
 .ui-nav-submenu a, .ui-nav-submenu i {color: inherit !important; text-decoration: none !important;}
-.ui-nav li {display: block; width:100%; border:none!important;}
+.ui-nav-vertical li {display: block; width:100%; border:none!important;}
 .ui-nav a {display: block !important;}
 </style>

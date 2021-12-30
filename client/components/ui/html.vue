@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <ui-editor-code v-if="codeMode" v-model="props.value" language="html" style="min-height:100px;" @change="emitValue()"></ui-editor-code>
+        <ui-code v-if="codeMode" v-model="props.value" language="html" style="min-height:100px;" @change="emitValue()"></ui-code>
         <div v-else class="form-control rounded-0" style="min-height:100px;" contenteditable="true" ref="editor" @keyup="props.value=$event.target.innerHTML; emitValue();"></div>
 
     </div>

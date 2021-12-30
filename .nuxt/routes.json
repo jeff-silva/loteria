@@ -3,13 +3,15 @@
     "name": "admin",
     "path": "/admin",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\index.vue",
-    "chunkName": "pages/admin/index"
+    "chunkName": "pages/admin/index",
+    "_name": "_24e9482b"
   },
   {
     "name": "auth",
     "path": "/auth",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\auth.vue",
-    "chunkName": "pages/auth"
+    "chunkName": "pages/auth",
+    "_name": "_e928efa0"
   },
   {
     "path": "/dev",
@@ -20,51 +22,67 @@
         "name": "dev-index",
         "path": "",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\index.vue",
-        "chunkName": "pages/dev/index/index"
+        "chunkName": "pages/dev/index/index",
+        "_name": "_5bebf53d"
       },
       {
         "name": "dev-index-artisan",
         "path": "artisan",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\artisan.vue",
-        "chunkName": "pages/dev/index/artisan"
+        "chunkName": "pages/dev/index/artisan",
+        "_name": "_6c86b765"
       },
       {
         "name": "dev-index-auth",
         "path": "auth",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\auth.vue",
-        "chunkName": "pages/dev/index/auth"
+        "chunkName": "pages/dev/index/auth",
+        "_name": "_6520f9e6"
+      },
+      {
+        "name": "dev-index-bootstrap",
+        "path": "bootstrap",
+        "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\bootstrap.vue",
+        "chunkName": "pages/dev/index/bootstrap",
+        "_name": "_9892694e"
       },
       {
         "name": "dev-index-editor",
         "path": "editor",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\editor.vue",
-        "chunkName": "pages/dev/index/editor"
+        "chunkName": "pages/dev/index/editor",
+        "_name": "_ca3445dc"
       },
       {
         "name": "dev-index-endpoints",
         "path": "endpoints",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\endpoints.vue",
-        "chunkName": "pages/dev/index/endpoints"
+        "chunkName": "pages/dev/index/endpoints",
+        "_name": "_7458eb2e"
       },
       {
         "name": "dev-index-example",
         "path": "example",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\example.vue",
-        "chunkName": "pages/dev/index/example"
+        "chunkName": "pages/dev/index/example",
+        "_name": "_e8532dd6"
       },
       {
         "name": "dev-index-files",
         "path": "files",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\files.vue",
-        "chunkName": "pages/dev/index/files"
+        "chunkName": "pages/dev/index/files",
+        "_name": "_3ea42c62"
       },
       {
         "name": "dev-index-nav",
         "path": "nav",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\dev\\\\index\\\\nav.vue",
-        "chunkName": "pages/dev/index/nav"
+        "chunkName": "pages/dev/index/nav",
+        "_name": "_18547dce"
       }
-    ]
+    ],
+    "_name": "_2099eba5"
   },
   {
     "path": "/loteria",
@@ -75,27 +93,32 @@
         "name": "loteria",
         "path": "",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\loteria\\\\index.vue",
-        "chunkName": "pages/loteria/index"
+        "chunkName": "pages/loteria/index",
+        "_name": "_12c31fc4"
       },
       {
         "name": "loteria-type",
         "path": ":type",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\loteria\\\\_type.vue",
-        "chunkName": "pages/loteria/_type"
+        "chunkName": "pages/loteria/_type",
+        "_name": "_1ffa438b"
       }
-    ]
+    ],
+    "_name": "_3e470a04"
   },
   {
     "name": "admin-files",
     "path": "/admin/files",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\files.vue",
-    "chunkName": "pages/admin/files"
+    "chunkName": "pages/admin/files",
+    "_name": "_07a17f50"
   },
   {
     "name": "admin-loterias",
     "path": "/admin/loterias",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\loterias\\\\index.vue",
-    "chunkName": "pages/admin/loterias/index"
+    "chunkName": "pages/admin/loterias/index",
+    "_name": "_1385dd6e"
   },
   {
     "path": "/admin/settings",
@@ -106,44 +129,52 @@
         "name": "admin-settings",
         "path": "",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\settings\\\\index.vue",
-        "chunkName": "pages/admin/settings/index"
+        "chunkName": "pages/admin/settings/index",
+        "_name": "_14b80f68"
       },
       {
         "name": "admin-settings-email",
         "path": "email",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\settings\\\\email.vue",
-        "chunkName": "pages/admin/settings/email"
+        "chunkName": "pages/admin/settings/email",
+        "_name": "_7986859c"
       },
       {
         "name": "admin-settings-user",
         "path": "user",
         "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\settings\\\\user.vue",
-        "chunkName": "pages/admin/settings/user"
+        "chunkName": "pages/admin/settings/user",
+        "_name": "_c09d87b6"
       }
-    ]
+    ],
+    "_name": "_76561bda"
   },
   {
     "name": "admin-users",
     "path": "/admin/users",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\users\\\\index.vue",
-    "chunkName": "pages/admin/users/index"
+    "chunkName": "pages/admin/users/index",
+    "_name": "_28e6f301"
   },
   {
     "name": "admin-loterias-type",
     "path": "/admin/loterias/:type",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\loterias\\\\_type.vue",
-    "chunkName": "pages/admin/loterias/_type"
+    "chunkName": "pages/admin/loterias/_type",
+    "_name": "_20bd0135"
   },
   {
     "name": "admin-users-id",
     "path": "/admin/users/:id",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\admin\\\\users\\\\_id.vue",
-    "chunkName": "pages/admin/users/_id"
+    "chunkName": "pages/admin/users/_id",
+    "_name": "_53e7c1a9"
   },
   {
     "name": "index",
     "path": "/",
     "component": "D:\\\\@repos\\\\loteria\\\\client\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_5d70947a"
   }
 ]
