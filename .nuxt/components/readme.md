@@ -6,6 +6,9 @@ You can directly use them in pages and other components without the need to impo
 
 **Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
 
+- `<LoteriaAnalysis>` | `<loteria-analysis>` (components/loteria/analysis.vue)
+- `<LoteriaNumbers>` | `<loteria-numbers>` (components/loteria/numbers.vue)
+- `<LoteriaTable>` | `<loteria-table>` (components/loteria/table.vue)
 - `<UiAddress>` | `<ui-address>` (components/ui/address.vue)
 - `<UiApp>` | `<ui-app>` (components/ui/app.vue)
 - `<UiCode>` | `<ui-code>` (components/ui/code.vue)
@@ -21,14 +24,11 @@ You can directly use them in pages and other components without the need to impo
 - `<UiSearch>` | `<ui-search>` (components/ui/search.vue)
 - `<UiSidebar>` | `<ui-sidebar>` (components/ui/sidebar.vue)
 - `<UiUpload>` | `<ui-upload>` (components/ui/upload.vue)
-- `<LoteriaAnalysis>` | `<loteria-analysis>` (components/loteria/analysis.vue)
-- `<LoteriaNumbers>` | `<loteria-numbers>` (components/loteria/numbers.vue)
-- `<LoteriaTable>` | `<loteria-table>` (components/loteria/table.vue)
-- `<UiContent>` | `<ui-content>` (components/ui/content/index.vue)
-- `<UiContentStyle>` | `<ui-content-style>` (components/ui/content/style.vue)
 - `<UiAuthLogin>` | `<ui-auth-login>` (components/ui/auth/login.vue)
 - `<UiAuthPassword>` | `<ui-auth-password>` (components/ui/auth/password.vue)
 - `<UiAuthRegister>` | `<ui-auth-register>` (components/ui/auth/register.vue)
+- `<UiContent>` | `<ui-content>` (components/ui/content/index.vue)
+- `<UiContentStyle>` | `<ui-content-style>` (components/ui/content/style.vue)
 - `<UiContentElement>` | `<ui-content-element>` (components/ui/content/element/index.js)
 - `<UiContentElementHtmlEditor>` | `<ui-content-element-html-editor>` (components/ui/content/element/html/editor.vue)
 - `<UiContentElementHtmlInfo>` | `<ui-content-element-html-info>` (components/ui/content/element/html/info.js)

@@ -6,6 +6,11 @@
 
         <div v-if="loteria">
             <div class="row">
+                <div class="col-12 mb-4">
+                    <h1>{{ loteria.type.name }}</h1>
+                    <a :href="loteria.type.link" target="_blank">Mais informações</a>
+                </div>
+
                 <div class="col-12 col-md-6">
                     <div class="card mb-3">
                         <div class="card-header">Simular</div>
@@ -16,29 +21,25 @@
                             <a href="javascript:;" class="btn btn-outline-primary" @click="$refs.loteriaTable.numberSet([])">Limpar tudo</a>
                         </div>
                     </div>
-
-                    <div class="card mb-3">
-                        <div class="card-header">Sorteios com selecionados</div>
-                        <div class="card-body" style="overflow:auto;">
-                            <loteria-analysis v-model="numbers"
-                                :loteria="loteria.type"
-                                :sorteios="loteria.numbers"
-                            ></loteria-analysis>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <div class="card">
-                        <div class="card-header">Todos os sorteios</div>
-                        <div class="card-body" style="overflow:auto;">
+                    <el-tabs value="all" type="border-card">
+                        <el-tab-pane name="all" label="Todos os sorteios">
                             <loteria-numbers v-model="numbers"
                                 :sorteios="loteria.numbers"
                                 ref="loteriaNumbers"
                                 style="max-height:90vh; overflow:auto;"
                             ></loteria-numbers>
-                        </div>
-                    </div>
+                        </el-tab-pane>
+
+                        <el-tab-pane name="selecteds" label="Selecionados">
+                            <loteria-analysis v-model="numbers"
+                                :loteria="loteria.type"
+                                :sorteios="loteria.numbers"
+                            ></loteria-analysis>
+                        </el-tab-pane>
+                    </el-tabs>
                 </div>
             </div>
             <!-- <pre>{{ loteria }}</pre> -->

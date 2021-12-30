@@ -1,20 +1,18 @@
 <template>
     <div class="loteria-numbers">
         <div v-infinite-scroll="infiniteScroll">
-            <table class="table table-sm table-striped table-borderless m-0">
-                <colgroup>
-                    <col width="200px">
-                    <col width="*">
-                </colgroup>
-                <tbody>
-                    <tr v-for="s in _sorteios">
-                        <td>
+
+            <div class="list-group rounded-0">
+                <div class="list-group-item" v-for="s in _sorteios" :class="listGroupItemClass(s)">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
                             <a href="javascript:;" @click="emitValue(s.numbersData)">
                                 <div>{{ s.number }}</div>
                                 <div>{{ s.date|dateFormat }}</div>
                             </a>
-                        </td>
-                        <td class="px-0 py-1" valign="middle">
+                        </div>
+
+                        <div class="col-12 col-md-8">
                             <a href="javascript:;"
                                 class="btn m-1 rounded-0"
                                 :class="btnClasses(nn)"
@@ -22,10 +20,10 @@
                                 v-for="nn in s.numbersData"
                                 @click="numberToggle(nn)"
                             >{{ nn }}</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <a href="javascript:;" class="btn btn-outline-primary w-100"
@@ -86,6 +84,20 @@ export default {
         infiniteScroll() {
             if (!this.props.loadMore) return;
             this.maxItems += 10;
+        },
+
+        arrayIntersection(a, b) {
+            return [...new Set(a)].filter(x => (new Set(b)).has(x));
+        },
+
+        listGroupItemClass(sorteio) {
+            let intersects = this.arrayIntersection(sorteio.numbersData, this.props.value);
+
+            if (intersects.length && intersects.length==sorteio.numbersData.length) {
+                return ['list-group-item-primary'];
+            }
+
+            return [];
         },
     },
 

@@ -54,7 +54,8 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 		
 		$types[] = array_merge($default, [
 			'id' => 'megasena',
-			'name' => 'Megasena',
+			'name' => 'Mega Sena',
+			'link' => 'http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/megasena/',
 			'tableNumberStart' => 1,
 			'tableNumberFinal' => 60,
 			'tableNumberLine' => 10,
@@ -86,7 +87,8 @@ class LoteriaSorteios extends \Illuminate\Database\Eloquent\Model
 
 		$types[] = array_merge($default, [
 			'id' => 'lotofacil',
-			'name' => 'Lotofácil',
+			'name' => 'Loto Fácil',
+			'link' => 'http://www.loterias.caixa.gov.br/wps/portal/loterias/landing/lotofacil/',
 			'tableNumberStart' => 1,
 			'tableNumberFinal' => 25,
 			'tableNumberLine' => 5,

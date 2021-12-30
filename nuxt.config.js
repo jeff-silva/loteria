@@ -76,18 +76,15 @@ export default {
 			workbox: {
 				enabled: true,
 				config: {debug:false},
-				cacheNames: {
-					prefix: process.env.APP_NAME,
-					suffix: `v1`,
-				},
-				runtimeCaching: [
-					// {
-					// 	urlPattern: 'https://fonts.googleapis.com/.*',
-					// 	handler: 'cacheFirst',
-					// 	method: 'GET',
-					// 	strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
-					// },
-				],
+				cacheNames: {prefix: process.env.APP_ID, suffix: 'v1'},
+				// runtimeCaching: [
+				// 	{
+				// 		urlPattern: 'https://fonts.googleapis.com/.*',
+				// 		handler: 'cacheFirst',
+				// 		method: 'GET',
+				// 		strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+				// 	},
+				// ],
 			},
 		}],
 	],
