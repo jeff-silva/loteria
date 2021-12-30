@@ -1,19 +1,13 @@
 <template>
     <div class="loteria-analysis">
-        <div class="list-group">
-            <div class="list-group-item" v-if="props.value.length==0">
-                Selecione números para a análise
-            </div>
-        
-            <div class="list-group-item" v-if="props.value.length && _sorteiosComSelecionados.length">
-                <div class="mb-1">{{ _sorteiosComSelecionados.length }} Jogos com os {{ props.value.length }} números selecionados:</div>
-                <div style="max-height:150px; overflow:auto;">
-                    <pre class="m-0" v-for="s in _sorteiosComSelecionados">• N°{{ s.number }} &nbsp; {{ s.date|dateFormat }} <br>&nbsp; {{ s.numbersData.join(', ') }}</pre>
-                </div>
-            </div>
-        </div>
-        <!-- <pre>_sorteiosComSelecionados: {{ _sorteiosComSelecionados }}</pre> -->
-        <!-- <pre>$data: {{ $data }}</pre> -->
+        <div v-if="_sorteiosComSelecionados.length==0">Selecione números</div>
+        <div v-if="_sorteiosComSelecionados.length>0">{{ _sorteiosComSelecionados.length }} sorteios com os {{ props.value.length }} números selecionados</div>
+        <div class="mb-2"></div>
+        <loteria-numbers v-model="props.value"
+            :sorteios="_sorteiosComSelecionados"
+            :load-more="false"
+            @change="emitValue()"
+        ></loteria-numbers>
     </div>
 </template>
 
@@ -33,10 +27,30 @@ export default {
     },
 
     methods: {
-        emitValue() {
+        emitValue(value=null) {
+            if (value!==null) { this.props.value = value; }
             this.$emit('value', this.props.value);
             this.$emit('input', this.props.value);
             this.$emit('change', this.props.value);
+        },
+
+        numberToggle(n) {
+            let ns = Array.isArray(n)? n: [n];
+            ns.forEach(n => {
+                let index = this.props.value.indexOf(n);
+                if (index==-1) this.props.value.push(n);
+                else this.props.value.splice(index, 1);
+            });
+            this.emitValue();
+        },
+
+        numberSet(n) {
+            this.props.value = [];
+            let ns = Array.isArray(n)? n: [n];
+            ns.forEach(n => {
+                this.props.value.push(n);
+            });
+            this.emitValue();
         },
 
         analysisLoad() {

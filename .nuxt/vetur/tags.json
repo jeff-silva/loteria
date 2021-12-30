@@ -1,13 +1,4 @@
 {
-  "LoteriaAnalysis": {
-    "description": "Auto imported from components/loteria/analysis.vue"
-  },
-  "LoteriaNumbers": {
-    "description": "Auto imported from components/loteria/numbers.vue"
-  },
-  "LoteriaTable": {
-    "description": "Auto imported from components/loteria/table.vue"
-  },
   "UiAddress": {
     "description": "Auto imported from components/ui/address.vue"
   },
@@ -53,6 +44,15 @@
   "UiUpload": {
     "description": "Auto imported from components/ui/upload.vue"
   },
+  "LoteriaAnalysis": {
+    "description": "Auto imported from components/loteria/analysis.vue"
+  },
+  "LoteriaNumbers": {
+    "description": "Auto imported from components/loteria/numbers.vue"
+  },
+  "LoteriaTable": {
+    "description": "Auto imported from components/loteria/table.vue"
+  },
   "UiContent": {
     "description": "Auto imported from components/ui/content/index.vue"
   },
@@ -71,15 +71,6 @@
   "UiContentElement": {
     "description": "Auto imported from components/ui/content/element/index.js"
   },
-  "UiContentElementPriceEditor": {
-    "description": "Auto imported from components/ui/content/element/price/editor.vue"
-  },
-  "UiContentElementPriceInfo": {
-    "description": "Auto imported from components/ui/content/element/price/info.js"
-  },
-  "UiContentElementPriceRender": {
-    "description": "Auto imported from components/ui/content/element/price/render.vue"
-  },
   "UiContentElementHtmlEditor": {
     "description": "Auto imported from components/ui/content/element/html/editor.vue"
   },
@@ -88,5 +79,14 @@
   },
   "UiContentElementHtmlRender": {
     "description": "Auto imported from components/ui/content/element/html/render.vue"
+  },
+  "UiContentElementPriceEditor": {
+    "description": "Auto imported from components/ui/content/element/price/editor.vue"
+  },
+  "UiContentElementPriceInfo": {
+    "description": "Auto imported from components/ui/content/element/price/info.js"
+  },
+  "UiContentElementPriceRender": {
+    "description": "Auto imported from components/ui/content/element/price/render.vue"
   }
 }

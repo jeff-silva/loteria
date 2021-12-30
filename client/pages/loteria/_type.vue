@@ -8,17 +8,17 @@
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="card mb-3">
-                        <div class="card-header">Simulador de aposta</div>
+                        <div class="card-header">Simular</div>
                         <div class="card-body" style="overflow:auto;">
                             <loteria-table v-model="numbers" :loteria="loteria.type" ref="loteriaTable"></loteria-table>
-                            <div class="d-flex mt-2">
-                                <div><a href="javascript:;" class="btn btn-outline-primary" @click="$refs.loteriaTable.numberSet([])">Limpar tudo</a></div>
-                            </div>
+                        </div>
+                        <div class="card-footer text-end">
+                            <a href="javascript:;" class="btn btn-outline-primary" @click="$refs.loteriaTable.numberSet([])">Limpar tudo</a>
                         </div>
                     </div>
 
                     <div class="card mb-3">
-                        <div class="card-header">Análise</div>
+                        <div class="card-header">Sorteios com selecionados</div>
                         <div class="card-body" style="overflow:auto;">
                             <loteria-analysis v-model="numbers"
                                 :loteria="loteria.type"
@@ -63,7 +63,6 @@ export default {
 
     methods: {
         loteriaSorteioTypeLoad() {
-            console.log('loteriaSorteioTypeLoad');
             this.$axios.get(`/api/loteria-sorteios/type/${this.$route.params.type}`).then(resp => {
                 this.loteria = resp.data;
             });
