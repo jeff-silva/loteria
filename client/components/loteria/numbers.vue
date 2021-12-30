@@ -3,6 +3,10 @@
         <div v-infinite-scroll="infiniteScroll">
 
             <div class="list-group rounded-0">
+                <div class="list-group-item" v-if="_sorteios.length==0">
+                    Nenhum item
+                </div>
+
                 <div class="list-group-item" v-for="s in _sorteios" :class="listGroupItemClass(s)">
                     <div class="row">
                         <div class="col-12 col-md-4">
@@ -36,8 +40,8 @@
 <script>
 export default {
     props: {
-        value: Array,
-        sorteios: Array,
+        value: {default:()=>([])},
+        sorteios: {default:()=>([])},
         loadMore: {default:true},
     },
 

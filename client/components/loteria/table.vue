@@ -19,7 +19,7 @@
 <script>
 export default {
     props: {
-        value: Array,
+        value: {default:()=>([])},
         loteria: Object,
     },
 

@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <div class="card mb-3">
+                    <div class="card mb-3" style="position:sticky; top:0;">
                         <div class="card-header">Simular</div>
                         <div class="card-body" style="overflow:auto;">
                             <loteria-table v-model="numbers" :loteria="loteria.type" ref="loteriaTable"></loteria-table>
@@ -33,16 +33,16 @@
                             ></loteria-numbers>
                         </el-tab-pane>
 
-                        <el-tab-pane name="selecteds" label="Selecionados">
-                            <loteria-analysis v-model="numbers"
-                                :loteria="loteria.type"
-                                :sorteios="loteria.numbers"
-                            ></loteria-analysis>
+                        <el-tab-pane :name="l.id" v-for="l in _sorteiosListas" :key="l.id">
+                            <template #label>{{ l.label }} ({{ l.sorteios.length }})</template>
+                            <loteria-numbers v-model="numbers"
+                                :sorteios="l.sorteios"
+                                :load-more="false"
+                            ></loteria-numbers>
                         </el-tab-pane>
                     </el-tabs>
                 </div>
             </div>
-            <!-- <pre>{{ loteria }}</pre> -->
         </div>
     </div>
 </template>
@@ -66,6 +66,58 @@ export default {
         loteriaSorteioTypeLoad() {
             this.$axios.get(`/api/loteria-sorteios/type/${this.$route.params.type}`).then(resp => {
                 this.loteria = resp.data;
+            });
+        },
+
+        arrayIntersection(a, b) {
+            return [...new Set(a)].filter(x => (new Set(b)).has(x));
+        },
+    },
+
+    computed: {
+        _sorteiosListas() {
+            let listas = [];
+
+            listas.push({
+                id: "aaa",
+                label: "Com todos os selecionados",
+                sorteios: (() => {
+                    if (this.numbers.length==0) return [];
+                    return this.loteria.numbers.filter(item => {
+                        let intersecs = this.arrayIntersection(item.numbersData, this.numbers);
+                        return intersecs.length == this.numbers.length;
+                    });
+                })(),
+            });
+
+            listas.push({
+                id: "bbb",
+                label: "Mais de 3 números",
+                sorteios: (() => {
+                    if (this.numbers.length==0) return [];
+                    return this.loteria.numbers.filter(item => {
+                        let intersecs = this.arrayIntersection(item.numbersData, this.numbers);
+                        return intersecs.length>=3;
+                    });
+                })(),
+            });
+
+            return listas;
+        },
+
+        _sorteiosComTodosSelecionados() {
+            if (this.numbers.length==0) return [];
+            return this.loteria.numbers.filter(item => {
+                let intersecs = this.arrayIntersection(item.numbersData, this.numbers);
+                return intersecs.length == this.numbers.length;
+            });
+        },
+
+        _sorteiosComAlgumSelecionado() {
+            if (this.numbers.length==0) return [];
+            return this.loteria.numbers.filter(item => {
+                let intersecs = this.arrayIntersection(item.numbersData, this.numbers);
+                return intersecs.length>0;
             });
         },
     },

@@ -1,28 +1,14 @@
 <template>
-    <div v-if="loteriasType">
-        <table class="table">
-            <colgroup>
-                <col width="50px">
-                <col width="*">
-                <col width="200px">
-            </colgroup>
+    <div class="row" v-if="loteria">
+        <div class="col-12 col-md-6">
+            <loteria-table v-model="numbers" :loteria="loteria.type"></loteria-table>
+        </div>
 
-            <thead>
-                <tr>
-                    <th>Sorteio</th>
-                    <th>Números</th>
-                    <th>Sorteado em</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr v-for="t in loteriasType.numbers">
-                    <td>{{ t.number }}</td>
-                    <td><pre>{{ t.numbersData.join(', ') }}</pre></td>
-                    <td>{{ t.date|dateFormat }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="col-12 col-md-6">
+            <loteria-numbers
+                :sorteios="loteria.numbers"
+            ></loteria-numbers>
+        </div>
     </div>
 </template>
 
@@ -33,20 +19,20 @@ export default {
 
     data() {
         return {
-            loteriasType: false,
+            loteria: false,
         };
     },
 
     methods: {
-        loteriasTypeLoad() {
+        loteriaLoad() {
             return this.$axios.get(`/api/loteria-sorteios/type/${this.$route.params.type}`).then(resp => {
-                this.loteriasType = resp.data;
+                this.loteria = resp.data;
             });
         },
     },
 
     mounted() {
-        this.loteriasTypeLoad();
+        this.loteriaLoad();
     },
 }
 </script>
